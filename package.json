@@ -1,7 +1,7 @@
 {
-  "name": "ps_google_base",
+  "name": "oc3_google_base",
   "version": "1.0.0",
-  "description": "Playful Sparkle - Google Base for OpenCart 3",
+  "description": "Playful Sparkle - Google Base (Feed) extension for OpenCart 3",
   "main": "index.js",
   "scripts": {
     "compress": "node compress.js"
