@@ -34,18 +34,19 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
         $this->load->model('localisation/language');
 
         $languages = $this->model_localisation_language->getLanguages();
-        $firstLanguage = current($languages);
-        $defaultLanguage = $firstLanguage['code'];
 
-        if (isset($this->request->get['language'])) {
-            $language = $this->request->get['language'];
+        $language = $this->config->get('config_language');
+        $language_id = (int) $this->config->get('config_language_id');
+        $old_language_id = $language_id;
 
-            if (false === in_array($language, array_column($languages, 'code'))) {
-                $language = $defaultLanguage;
-            }
-        } else {
-            $language = $defaultLanguage;
+        if (isset($this->request->get['language']) && isset($languages[$this->request->get['language']])) {
+            $cur_language = $languages[$this->request->get['language']];
+
+            $language = $cur_language['code'];
+            $language_id = $cur_language['language_id'];
         }
+
+        $this->config->set('config_language_id', $language_id);
 
         $xml = new XMLWriter();
         $xml->openMemory();
@@ -268,6 +269,8 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
         $xml->endElement(); // End <rss>
 
         $xml->endDocument();
+
+        $this->config->set('config_language_id', $old_language_id);
 
         $this->response->addHeader('Content-Type: application/xml');
         $this->response->setOutput($xml->outputMemory());
