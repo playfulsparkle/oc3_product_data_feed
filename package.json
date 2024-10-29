@@ -1,5 +1,5 @@
 {
-  "name": "oc4_google_product_feed",
+  "name": "ps_google_base",
   "version": "1.0.0",
   "description": "Playful Sparkle - Google Base for OpenCart 3",
   "main": "index.js",
