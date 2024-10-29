@@ -1,0 +1,26 @@
+{
+  "name": "oc4_google_product_feed",
+  "version": "1.0.0",
+  "description": "Playful Sparkle - Google Base for OpenCart 3",
+  "main": "index.js",
+  "scripts": {
+    "compress": "node compress.js"
+  },
+  "keywords": [
+    "opencart",
+    "oc",
+    "playfulsparkle",
+    "google",
+    "product feed"
+  ],
+  "author": "zsoltoroszlany82 <zsolt.oroszlany@playfulsparkle.com>",
+  "license": "GPL",
+  "dependencies": {
+    "archiver": "^7.0.1",
+    "fs": "^0.0.1-security"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/playfulsparkle/oc3_google_base.git"
+  }
+}
