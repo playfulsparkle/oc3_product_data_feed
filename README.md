@@ -1,4 +1,4 @@
-# Playful Sparkle - Google Base
+# Playful Sparkle - Google Base for OpenCart 3
 
 The **Playful Sparkle - Google Base** extension allows OpenCart 3 users to effortlessly export products to Google Merchant Center in XML format. This tool enhances product visibility on Google Shopping, making it easier for potential customers to discover and purchase your products.
 
