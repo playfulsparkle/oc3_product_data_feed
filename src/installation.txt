@@ -1,0 +1,43 @@
+# Playful Sparkle - Google Base
+
+The Playful Sparkle - Google Base extension allows OpenCart 3.x users to export products to Google Merchant Center in XML format. This tool improves product visibility on Google Shopping, making it easier for potential customers to find and buy your products.
+
+The extension simplifies integration with Google Merchant Center, automating product feed management and enhancing your online presence. Streamline your operations and boost sales with this essential tool for OpenCart 3.x.
+
+For more information, visit the extension GitHub page at https://github.com/playfulsparkle/oc3_google_base.git.
+
+Demo frontend - https://opencart3.playfulsparkle.com/
+Demo backend - https://opencart3.playfulsparkle.com/admin/
+
+Key Features
+
+* Skip Out of Stock Products: Exclude unavailable items from your feed for a better customer experience.
+* Currency Selection: Display prices in your chosen currency for different markets.
+* Multi-Language Support: Create product feeds in various languages to reach diverse customer bases.
+* Language-Specific Feed Submission: Choose which language-specific feed to submit to Google Merchant Center.
+* User-Friendly Setup: Enjoy a seamless setup process through the OpenCart interface, designed for ease of use and efficiency.
+* Full Compatibility: Fully compatible with OpenCart 3.x, ensuring smooth integration with your existing setup.
+
+Installation Guide
+
+1. Download the "Playful Sparkle - Google Base" Extension Package.
+2. Download the latest version of the Playful Sparkle - Google Base extension from the link provided on this page.
+3. Upload the Extension Files:
+    1. Log in to your OpenCart admin panel.
+    2. Navigate to Extensions > Installer.
+    3. Click the "Upload" button and upload the file ps_google_base.ocmod.zip.
+4. Install the Extension:
+    1. After uploading, click the green "Install" button.
+    2. Go to Extensions and select Feeds from the dropdown menu.
+    3. Locate the "Playful Sparkle - Google Base" extension in the list.
+    4. Click the green "Install" button to activate it.
+5. Configure the Extension:
+    1. Stay on the Extensions page with Feeds selected.
+    2. Click the "Edit" button next to the installed Playful Sparkle - Google Base extension.
+    3. Select Currency from the list.
+    4. Configure at least one Google category to your shop category association.
+    5. Save your configuration.
+
+Support & Feedback
+
+For support or any inquiries regarding the extension, feel free to open an issue on this repository or reach out via email at support@playfulsparkle.com.

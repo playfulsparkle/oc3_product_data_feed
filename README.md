@@ -1,8 +1,8 @@
 # Playful Sparkle - Google Base for OpenCart 3
 
-The **Playful Sparkle - Google Base** extension allows OpenCart 3 users to effortlessly export products to Google Merchant Center in XML format. This tool enhances product visibility on Google Shopping, making it easier for potential customers to discover and purchase your products.
+The **Playful Sparkle - Google Base** extension allows OpenCart 3.x users to effortlessly export products to Google Merchant Center in XML format. This tool enhances product visibility on Google Shopping, making it easier for potential customers to discover and purchase your products.
 
-The extension simplifies the integration with Google Merchant Center, automating product feed management and enhancing online presence in the competitive market. Streamline your operations and boost sales with this essential tool for OpenCart 3!
+The extension simplifies the integration with Google Merchant Center, automating product feed management and enhancing online presence in the competitive market. Streamline your operations and boost sales with this essential tool for OpenCart 3.x!
 
 ## What is Google Merchant Center?
 [Google Merchant Center](https://merchants.google.com) is a platform for retailers to upload product listings, allowing them to appear in Google Shopping and Google Ads. It helps increase visibility, optimize targeted advertising, and provides valuable analytics to improve your marketing strategies.
@@ -17,15 +17,11 @@ The extension simplifies the integration with Google Merchant Center, automating
 - **Multi-Language Support:** Create product feeds in various languages to reach diverse customer bases.
 - **Language-Specific Feed Submission:** Choose which language-specific feed to submit to Google Merchant Center.
 - **User-Friendly Setup**: Enjoy a seamless setup process through the OpenCart interface, designed for ease of use and efficiency.
-- **Full Compatibility**: Fully compatible with OpenCart v3.x, ensuring smooth integration with your existing setup.
+- **Full Compatibility**: Fully compatible with OpenCart 3.x, ensuring smooth integration with your existing setup.
 
 ---
 
 ## Installation Instructions
-
-### Important note
-
-OpenCart requires all extension package filenames to end in the .ocmod.zip format for successful installation. The Playful Sparkle - Google Base extension must follow this naming convention to ensure compatibility with OpenCart's installer.
 
 ### 1. Download the Extension
 Download the latest **Playful Sparkle - Google Base** release from this repository.
@@ -52,7 +48,7 @@ Download the latest **Playful Sparkle - Google Base** release from this reposito
 
 ## Support & Feedback
 
-For support or any inquiries regarding the extensions, feel free to open an issue on this repository or reach out via email at support@playfulsparkle.com.
+For support or any inquiries regarding the extension, feel free to open an issue on this repository or reach out via email at [support@playfulsparkle.com](mailto:support@playfulsparkle.com).
 
 ---
 
