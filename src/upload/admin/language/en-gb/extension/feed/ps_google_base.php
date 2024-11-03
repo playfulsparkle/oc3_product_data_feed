@@ -30,7 +30,7 @@ $_['column_category']              = 'Category';
 $_['column_action']                = 'Action';
 
 // Tab
-$_['tab_general']                  = 'General settings';
+$_['tab_general']                  = 'General';
 $_['tab_help_and_support']         = 'Help &amp; Support';
 
 // Entry

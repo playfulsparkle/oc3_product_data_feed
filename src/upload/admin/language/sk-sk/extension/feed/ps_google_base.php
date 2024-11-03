@@ -22,7 +22,7 @@ $_['text_getting_started']         = '<p><strong>Prehľad:</strong> Rozšírenie
 $_['text_setup']                   = '<ul><li>Stiahnite si najnovší zoznam kategórií Google z <a href="https://support.google.com/merchants/answer/160081?hl=sk" target="_blank" rel="external noopener noreferrer">podpory Google Merchant Center</a>.</li><li>Prepojte kategórie svojho e-shopu s príslušnými kategóriami Google.</li><li>Nakonfigurujte rozšírenie tak, aby preskočilo produkty, ktoré sú vypredané, ak si to prajete.</li><li>Použite ceny bez dane vo feede aktivovaním príslušnej možnosti a prispôsobte definície daní podľa potreby.</li></ul>';
 $_['text_troubleshot']             = '<ul><li><strong>Kategórie Google sa nezobrazujú:</strong> Uistite sa, že ste si stiahli najnovší zoznam kategórií Google a importovali ho do svojho systému. To je nevyhnutné pre správne prepojenie medzi vaším e-shopom a Google Merchant Center.</li><li><strong>Žiadny výstup produktového feedu:</strong> Potvrďte, že je rozšírenie Google Base povolené vo vašej administratívnej časti OpenCart. Ak je povolené a stále nevidíte žiadny výstup, skontrolujte nastavenia rozšírenia na prípadné nesprávne konfigurácie.</li><li><strong>Produkty sa nezobrazujú v Google Merchant Center:</strong> Overte, že sú vaše produkty správne kategorizované a že v údajoch o produktoch nie sú žiadne chyby. Uistite sa, že dodržiavate zásady Google Merchant Center týkajúce sa produktových zoznamov.</li></ul>';
 $_['text_faq']                     = '<details><summary>Čo je rozšírenie Google Base?</summary><p>Rozšírenie Google Base pomáha používateľom OpenCart 3.x exportovať údaje o svojich produktoch do Google Merchant Center, čím zvyšuje viditeľnosť na Google Shopping.</p></details><details><summary>Ako môžem aktivovať rozšírenie Google Base?</summary><p>Rozšírenie môžete aktivovať z administratívnej časti OpenCart v sekcii Rozšírenia. Uistite sa, že nastavíte potrebné konfigurácie.</p></details><details><summary>Môžem si prispôsobiť svoj produktový feed?</summary><p>Áno, rozšírenie vám umožňuje prispôsobiť rôzne nastavenia, vrátane použitia cien bez dane a definícií daní, čím zabezpečíte, že váš feed vyhovuje vašim potrebám.</p></details><details><summary>Prečo sa môj produktový feed nezobrazuje v Google Merchant Center?</summary><p>Uistite sa, že je rozšírenie Google Base povolené a že sú vaše produktové kategórie správne prepojené s kategóriami Google. Okrem toho skontrolujte, či v konfigurácii vášho feedu nie sú žiadne chyby.</p></details>';
-$_['text_contact']                 = '<p>Pre ďalšiu pomoc prosím kontaktujte náš tím podpory:</p><ul><li><strong>Kontakt:</strong> <a href="mailto:%s">%s</a></li><li><strong>Dokumentácia:</strong> <a href="%s" target="_blank" rel="noopener noreferrer">Dokumentácia pre používateľov</a></li></ul>';
+$_['text_contact']                 = '<p>Pre ďalšiu pomoc sa, prosím, obráťte na náš tím podpory:</p><ul><li><strong>Kontakt:</strong> <a href="mailto:%s">%s</a></li><li><strong>Dokumentácia:</strong> <a href="%s" target="_blank" rel="noopener noreferrer">Dokumentácia pre používateľov</a></li></ul>';
 
 // Column
 $_['column_google_category']       = 'Kategória Google';
@@ -30,7 +30,7 @@ $_['column_category']              = 'Kategória';
 $_['column_action']                = 'Akcia';
 
 // Tab
-$_['tab_general']                  = 'Všeobecné nastavenia';
+$_['tab_general']                  = 'Všeobecné';
 $_['tab_help_and_support']         = 'Pomoc a podpora';
 
 // Entry
