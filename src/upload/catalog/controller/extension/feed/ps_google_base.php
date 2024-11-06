@@ -35,14 +35,12 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
 
         $languages = $this->model_localisation_language->getLanguages();
 
-        $language = $this->config->get('config_language');
         $language_id = (int) $this->config->get('config_language_id');
         $old_language_id = $language_id;
 
         if (isset($this->request->get['language']) && isset($languages[$this->request->get['language']])) {
             $cur_language = $languages[$this->request->get['language']];
 
-            $language = $cur_language['code'];
             $language_id = $cur_language['language_id'];
         }
 
@@ -64,7 +62,7 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
         $xml->writeElement('title', $this->config->get('config_name'));
         $xml->writeElement('description', $this->config->get('config_meta_description'));
 
-        $link = $this->url->link('common/home', 'language=' . $language);
+        $link = $this->url->link('common/home');
         $xml->writeElement('link', str_replace('&amp;', '&', $link));
 
         $currency_code = $this->config->get('config_currency');
@@ -122,7 +120,7 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
                     $xml->writeCData(html_entity_decode($product['name'], ENT_QUOTES, 'UTF-8'));
                     $xml->endElement();
 
-                    $xml->writeElement('link', $this->url->link('product/product', 'language=' . $language . '&product_id=' . $product['product_id']));
+                    $xml->writeElement('link', $this->url->link('product/product', 'product_id=' . $product['product_id']));
 
                     $xml->startElement('description');
                     $xml->writeCData($this->normalizeDescription($product['description']));
