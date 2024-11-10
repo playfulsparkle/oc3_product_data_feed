@@ -17,6 +17,17 @@ Key Features
 * Language-Specific Feed Submission: Choose which language-specific feed to submit to Google Merchant Center.
 * User-Friendly Setup: Enjoy a seamless setup process through the OpenCart interface, designed for ease of use and efficiency.
 * Full Compatibility: Fully compatible with OpenCart 3.x, ensuring smooth integration with your existing setup.
+* Multilingual Support: The extension is available in the following languages:
+  * Čeština (cs-cz)
+  * Deutsch (de-de)
+  * English (GB) (en-gb)
+  * English (US) (en-us)
+  * Español (es-es)
+  * Français (fr-fr)
+  * Magyar (hu-hu)
+  * Italiano (it-it)
+  * Русский (ru-ru)
+  * Slovenčina (sk-sk)
 
 Installation Guide
 
