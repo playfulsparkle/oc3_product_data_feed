@@ -189,11 +189,11 @@ class ModelExtensionFeedPSGoogleBase extends Model
         return $query->row['total'];
     }
 
-    public function getCountries(array $data = []): array
+    public function getCountries(array $data = array()): array
     {
         $sql = "SELECT * FROM `" . DB_PREFIX . "country`";
 
-        $implode = [];
+        $implode = array();
 
         if (!empty($data['filter_name'])) {
             $implode[] = "`name` LIKE '" . $this->db->escape((string) $data['filter_name'] . '%') . "'";
@@ -203,11 +203,11 @@ class ModelExtensionFeedPSGoogleBase extends Model
             $sql .= " WHERE " . implode(" AND ", $implode);
         }
 
-        $sort_data = [
+        $sort_data = array(
             'name',
             'iso_code_2',
             'iso_code_3'
-        ];
+        );
 
         if (isset($data['sort']) && in_array($data['sort'], $sort_data)) {
             $sql .= " ORDER BY " . $data['sort'];

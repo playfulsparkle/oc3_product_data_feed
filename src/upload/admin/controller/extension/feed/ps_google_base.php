@@ -153,13 +153,13 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
 
         $data['store_id'] = $store_id;
 
-        $data['stores'] = [];
+        $data['stores'] = array();
 
-        $data['stores'][] = [
+        $data['stores'][] = array(
             'store_id' => 0,
             'name' => $this->config->get('config_name') . '&nbsp;' . $this->language->get('text_default'),
             'href' => $this->url->link('extension/feed/ps_google_base', 'user_token=' . $this->session->data['user_token'] . '&store_id=0'),
-        ];
+        );
 
         $this->load->model('setting/store');
 
@@ -168,18 +168,18 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
         $store_url = HTTP_CATALOG;
 
         foreach ($stores as $store) {
-            $data['stores'][] = [
+            $data['stores'][] = array(
                 'store_id' => $store['store_id'],
                 'name' => $store['name'],
                 'href' => $this->url->link('extension/feed/ps_google_base', 'user_token=' . $this->session->data['user_token'] . '&store_id=' . $store['store_id']),
-            ];
+            );
 
             if ((int) $store['store_id'] === $store_id) {
                 $store_url = $store['url'];
             }
         }
 
-        $data['data_feed_urls'] = [];
+        $data['data_feed_urls'] = array();
 
         foreach ($languages as $language) {
             $data['data_feed_urls'][$language['language_id']] = rtrim($store_url, '/') . '/index.php?route=extension/feed/ps_google_base&language=' . $language['code'];
@@ -190,10 +190,10 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
         $tax_rates = $this->model_localisation_tax_rate->getTaxRates();
 
         foreach ($tax_rates as $tax_rate) {
-            $data['tax_rates'][] = [
+            $data['tax_rates'][] = array(
                 'tax_rate_id' => $tax_rate['tax_rate_id'],
                 'name' => $tax_rate['name'],
-            ];
+            );
         }
 
         $data['text_contact'] = sprintf($this->language->get('text_contact'), self::EXTENSION_EMAIL, self::EXTENSION_EMAIL, self::EXTENSION_DOC);
@@ -539,7 +539,7 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
      */
     public function countryautocomplete()
     {
-        $json = [];
+        $json = array();
 
         if (isset($this->request->get['filter_name'])) {
             $filter_name = trim($this->request->get['filter_name']);
@@ -550,19 +550,19 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
         if (utf8_strlen($filter_name) > 0) {
             $this->load->model('extension/feed/ps_google_base');
 
-            $filter_data = [
+            $filter_data = array(
                 'filter_name' => $filter_name,
                 'start' => 0,
                 'limit' => 5,
-            ];
+            );
 
             $results = $this->model_extension_feed_ps_google_base->getCountries($filter_data);
 
             foreach ($results as $key => $value) {
-                $json[] = [
+                $json[] = array(
                     'name' => $value['name'],
                     'iso_code_2' => $value['iso_code_2'],
-                ];
+                );
             }
         }
 

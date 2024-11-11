@@ -76,32 +76,32 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
         $link = $this->url->link('common/home');
         $xml->writeElement('link', str_replace('&amp;', '&', $link));
 
-        $taxes = [];
+        $taxes = array();
 
         if (is_array($base_tax_definitions)) {
             foreach ($base_tax_definitions as $base_tax_definition) {
                 $tax_rate_info = $this->model_extension_feed_ps_google_base->getTaxRate($base_tax_definition['tax_rate_id']);
 
                 if ($tax_rate_info) {
-                    $taxes[] = [
+                    $taxes[] = array(
                         'country_id' => $base_tax_definition['country_id'],
                         'region' => $base_tax_definition['region'],
                         'tax_rate' => $tax_rate_info['rate'],
                         'tax_ship' => $base_tax_definition['tax_ship'],
-                    ];
+                    );
                 }
             }
         }
 
-        $product_data = [];
+        $product_data = array();
 
         $google_base_categories = $this->model_extension_feed_ps_google_base->getCategories();
 
         foreach ($google_base_categories as $google_base_category) {
-            $filter_data = [
+            $filter_data = array(
                 'filter_category_id' => $google_base_category['category_id'],
                 'filter_filter' => false
-            ];
+            );
 
             $products = $this->model_catalog_product->getProducts($filter_data);
 
