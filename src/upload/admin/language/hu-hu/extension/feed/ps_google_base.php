@@ -46,12 +46,14 @@ $_['entry_country']                = 'Ország';
 $_['entry_region']                 = 'Régió';
 $_['entry_tax_rate']               = 'Adókulcs';
 $_['entry_tax_ship']               = 'Szállítási adó';
+$_['entry_active_store']           = 'Aktív áruház';
 
 // Error
 $_['error_permission']             = 'Figyelmeztetés: Nincs jogosultsága a Google Base feed módosításához!';
+$_['error_store_id']               = 'Figyelmeztetés: A űrlap nem tartalmazza a áruház azonosítóját!';
+$_['error_currency']               = 'Figyelmeztetés: Válasszon pénznemet a listából';
 $_['error_upload']                 = 'A fájl feltöltése nem sikerült!';
 $_['error_filetype']               = 'Érvénytelen fájltípus!';
-$_['error_currency']               = 'Figyelmeztetés: Válasszon pénznemet a listából';
 $_['error_tax_country']            = 'Kérem, válassza ki az adó országát.';
 $_['error_tax_region']             = 'Az adóregionális mező nem maradhat üresen.';
 $_['error_tax_rate_id']            = 'Kérem, válassza ki az adókulcsot az adóhoz.';

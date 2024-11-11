@@ -46,12 +46,14 @@ $_['entry_country']                = 'Country';
 $_['entry_region']                 = 'Region';
 $_['entry_tax_rate']               = 'Tax Rate';
 $_['entry_tax_ship']               = 'Shipping tax';
+$_['entry_active_store']           = 'Active Store';
 
 // Error
 $_['error_permission']             = 'Warning: You do not have permission to modify Google Base feed!';
+$_['error_store_id']               = 'Warning: Form does not contain store_id!';
+$_['error_currency']               = 'Warning: Select a currency from the list';
 $_['error_upload']                 = 'File could not be uploaded!';
 $_['error_filetype']               = 'Invalid file type!';
-$_['error_currency']               = 'Warning: Select a currency from the list';
 $_['error_tax_country']            = 'Please select country for the tax.';
 $_['error_tax_region']             = 'The tax region field cannot be left empty.';
 $_['error_tax_rate_id']            = 'Please select tax rate for the tax';

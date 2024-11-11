@@ -46,12 +46,14 @@ $_['entry_country']                = 'Pays';
 $_['entry_region']                 = 'Région';
 $_['entry_tax_rate']               = 'Taux de taxe';
 $_['entry_tax_ship']               = 'Taxe sur l\'expédition';
+$_['entry_active_store']           = 'Magasin actif';
 
 // Error
 $_['error_permission']             = 'Avertissement : Vous n\'avez pas l\'autorisation de modifier le flux Google Base !';
+$_['error_store_id']               = 'Avertissement : Le formulaire ne contient pas d\'ID de magasin !';
+$_['error_currency']               = 'Avertissement : Sélectionnez une devise dans la liste';
 $_['error_upload']                 = 'Le fichier n\'a pas pu être téléchargé !';
 $_['error_filetype']               = 'Type de fichier invalide !';
-$_['error_currency']               = 'Avertissement : Sélectionnez une devise dans la liste';
 $_['error_tax_country']            = 'Veuillez sélectionner un pays pour la taxe.';
 $_['error_tax_region']             = 'Le champ de région fiscale ne peut pas être laissé vide.';
 $_['error_tax_rate_id']            = 'Veuillez sélectionner un taux de taxe pour la taxe';

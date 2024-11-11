@@ -46,12 +46,14 @@ $_['entry_country']                = 'Země';
 $_['entry_region']                 = 'Kraj';
 $_['entry_tax_rate']               = 'Sazba daně';
 $_['entry_tax_ship']               = 'Doprava daně';
+$_['entry_active_store']           = 'Aktivní obchod';
 
 // Error
 $_['error_permission']             = 'Upozornění: Nemáte oprávnění upravovat Google Base feed!';
+$_['error_store_id']               = 'Upozornění: Formulář neobsahuje identifikátor obchodu!';
+$_['error_currency']               = 'Upozornění: Vyberte měnu ze seznamu';
 $_['error_upload']                 = 'Soubor se nepodařilo nahrát!';
 $_['error_filetype']               = 'Neplatný typ souboru!';
-$_['error_currency']               = 'Upozornění: Vyberte měnu ze seznamu';
 $_['error_tax_country']            = 'Prosím, vyberte zemi pro daň.';
 $_['error_tax_region']             = 'Pole pro daňový kraj nesmí být prázdné.';
 $_['error_tax_rate_id']            = 'Prosím, vyberte sazbu daně pro daň.';

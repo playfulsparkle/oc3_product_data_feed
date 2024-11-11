@@ -42,7 +42,7 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
         $this->load->model('setting/setting');
 
         if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
-            $this->model_setting_setting->editSetting('feed_ps_google_base', $this->request->post);
+            $this->model_setting_setting->editSetting('feed_ps_google_base', $this->request->post, $this->request->get['store_id']);
 
             $this->session->data['success'] = $this->language->get('text_success');
 
@@ -54,6 +54,31 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
         } else {
             $data['error_warning'] = '';
         }
+
+        if (isset($this->error['input_tax_country'])) {
+            $data['error_input_tax_country'] = $this->error['input_tax_country'];
+        } else {
+            $data['error_input_tax_country'] = array();
+        }
+
+        if (isset($this->error['input_tax_region'])) {
+            $data['error_input_tax_region'] = $this->error['input_tax_region'];
+        } else {
+            $data['error_input_tax_region'] = array();
+        }
+
+        if (isset($this->error['input_tax_rate_id'])) {
+            $data['error_input_tax_rate_id'] = $this->error['input_tax_rate_id'];
+        } else {
+            $data['error_input_tax_rate_id'] = array();
+        }
+
+        if (isset($this->request->get['store_id'])) {
+            $store_id = (int) $this->request->get['store_id'];
+        } else {
+            $store_id = 0;
+        }
+
 
         $data['breadcrumbs'] = array();
 
@@ -69,51 +94,55 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
 
         $data['breadcrumbs'][] = array(
             'text' => $this->language->get('heading_title'),
-            'href' => $this->url->link('extension/feed/ps_google_base', 'user_token=' . $this->session->data['user_token'], true)
+            'href' => $this->url->link('extension/feed/ps_google_base', 'user_token=' . $this->session->data['user_token'] . '&store_id=' . $store_id, true)
         );
 
-        $data['action'] = $this->url->link('extension/feed/ps_google_base', 'user_token=' . $this->session->data['user_token'], true);
+        $data['action'] = $this->url->link('extension/feed/ps_google_base', 'user_token=' . $this->session->data['user_token'] . '&store_id=' . $store_id, true);
 
         $data['cancel'] = $this->url->link('marketplace/extension', 'user_token=' . $this->session->data['user_token'] . '&type=feed', true);
 
         $data['user_token'] = $this->session->data['user_token'];
 
-        $data['data_feed'] = HTTP_CATALOG . 'index.php?route=extension/feed/ps_google_base';
-
         if (isset($this->request->post['feed_ps_google_base_status'])) {
-            $data['feed_ps_google_base_status'] = $this->request->post['feed_ps_google_base_status'];
+            $data['feed_ps_google_base_status'] = (bool) $this->request->post['feed_ps_google_base_status'];
         } else {
-            $data['feed_ps_google_base_status'] = $this->config->get('feed_ps_google_base_status');
+            $data['feed_ps_google_base_status'] = (bool) $this->model_setting_setting->getSettingValue('feed_ps_google_base_status', $store_id);
         }
 
         if (isset($this->request->post['feed_ps_google_base_skip_out_of_stock'])) {
-            $data['feed_ps_google_base_skip_out_of_stock'] = $this->request->post['feed_ps_google_base_skip_out_of_stock'];
+            $data['feed_ps_google_base_skip_out_of_stock'] = (bool) $this->request->post['feed_ps_google_base_skip_out_of_stock'];
         } else {
-            $data['feed_ps_google_base_skip_out_of_stock'] = $this->config->get('feed_ps_google_base_skip_out_of_stock');
-        }
-
-        if (isset($this->request->post['feed_ps_google_base_tax'])) {
-            $data['feed_ps_google_base_tax'] = $this->request->post['feed_ps_google_base_tax'];
-        } else {
-            $data['feed_ps_google_base_tax'] = $this->config->get('feed_ps_google_base_tax');
-        }
-
-        if (isset($this->request->post['feed_ps_google_base_taxes'])) {
-            $data['feed_ps_google_base_taxes'] = (array) $this->request->post['feed_ps_google_base_taxes'];
-        } else {
-            $data['feed_ps_google_base_taxes'] = (array) $this->config->get('feed_ps_google_base_taxes');
+            $data['feed_ps_google_base_skip_out_of_stock'] = (bool) $this->model_setting_setting->getSettingValue('feed_ps_google_base_skip_out_of_stock', $store_id);
         }
 
         if (isset($this->request->post['feed_ps_google_base_login'])) {
             $data['feed_ps_google_base_login'] = $this->request->post['feed_ps_google_base_login'];
         } else {
-            $data['feed_ps_google_base_login'] = $this->config->get('feed_ps_google_base_login');
+            $data['feed_ps_google_base_login'] = $this->model_setting_setting->getSettingValue('feed_ps_google_base_login', $store_id);
         }
 
         if (isset($this->request->post['feed_ps_google_base_password'])) {
             $data['feed_ps_google_base_password'] = $this->request->post['feed_ps_google_base_password'];
         } else {
-            $data['feed_ps_google_base_password'] = $this->config->get('feed_ps_google_base_password');
+            $data['feed_ps_google_base_password'] = $this->model_setting_setting->getSettingValue('feed_ps_google_base_password', $store_id);
+        }
+
+        if (isset($this->request->post['feed_ps_google_base_tax'])) {
+            $data['feed_ps_google_base_tax'] = (bool) $this->request->post['feed_ps_google_base_tax'];
+        } else {
+            $data['feed_ps_google_base_tax'] = (bool) $this->model_setting_setting->getSettingValue('feed_ps_google_base_tax', $store_id);
+        }
+
+        if (isset($this->request->post['feed_ps_google_base_taxes'])) {
+            $data['feed_ps_google_base_taxes'] = $this->request->post['feed_ps_google_base_taxes'];
+        } else {
+            $base_taxes = $this->model_setting_setting->getSettingValue('feed_ps_google_base_taxes', $store_id);
+
+            if (!is_array($base_taxes)) {
+                $base_taxes = (array) json_decode((string) $base_taxes, true);
+            }
+
+            $data['feed_ps_google_base_taxes'] = $base_taxes;
         }
 
         $this->load->model('localisation/language');
@@ -122,10 +151,38 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
 
         $data['languages'] = $languages;
 
+        $data['store_id'] = $store_id;
+
+        $data['stores'] = [];
+
+        $data['stores'][] = [
+            'store_id' => 0,
+            'name' => $this->config->get('config_name') . '&nbsp;' . $this->language->get('text_default'),
+            'href' => $this->url->link('extension/feed/ps_google_base', 'user_token=' . $this->session->data['user_token'] . '&store_id=0'),
+        ];
+
+        $this->load->model('setting/store');
+
+        $stores = $this->model_setting_store->getStores();
+
+        $store_url = HTTP_CATALOG;
+
+        foreach ($stores as $store) {
+            $data['stores'][] = [
+                'store_id' => $store['store_id'],
+                'name' => $store['name'],
+                'href' => $this->url->link('extension/feed/ps_google_base', 'user_token=' . $this->session->data['user_token'] . '&store_id=' . $store['store_id']),
+            ];
+
+            if ((int) $store['store_id'] === $store_id) {
+                $store_url = $store['url'];
+            }
+        }
+
         $data['data_feed_urls'] = [];
 
         foreach ($languages as $language) {
-            $data['data_feed_urls'][$language['language_id']] = HTTP_CATALOG . 'index.php?route=extension/feed/ps_google_base&language=' . $language['code'];
+            $data['data_feed_urls'][$language['language_id']] = rtrim($store_url, '/') . '/index.php?route=extension/feed/ps_google_base&language=' . $language['code'];
         }
 
         $this->load->model('localisation/tax_rate');
@@ -153,6 +210,29 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
         if (!$this->user->hasPermission('modify', 'extension/feed/ps_google_base')) {
             $this->error['warning'] = $this->language->get('error_permission');
         }
+
+        if (!$this->error && (!isset($this->request->post['store_id']) || !isset($this->request->get['store_id']))) {
+            $this->error['warning'] = $this->language->get('error_store_id');
+        }
+
+        if (!$this->error) {
+            if (isset($this->request->post['feed_ps_google_base_tax'], $this->request->post['feed_ps_google_base_taxes'])) {
+                foreach ($this->request->post['feed_ps_google_base_taxes'] as $row_id => $data) {
+                    if (utf8_strlen(trim($data['country'])) === 0 || utf8_strlen(trim($data['country_id'])) === 0) {
+                        $this->error['input_tax_country'][$row_id] = $this->language->get('error_tax_country');
+                    }
+
+                    if (utf8_strlen(trim($data['region'])) === 0) {
+                        $this->error['input_tax_region'][$row_id] = $this->language->get('error_tax_region');
+                    }
+
+                    if (utf8_strlen(trim($data['tax_rate_id'])) === 0) {
+                        $this->error['input_tax_rate_id'][$row_id] = $this->language->get('error_tax_rate_id');
+                    }
+                }
+            }
+        }
+
 
         return !$this->error;
     }
@@ -287,6 +367,12 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
     {
         $this->load->language('extension/feed/ps_google_base');
 
+        if (isset($this->request->get['store_id'])) {
+            $store_id = (int) $this->request->get['store_id'];
+        } else {
+            $store_id = 0;
+        }
+
         if (isset($this->request->get['page'])) {
             $page = (int) $this->request->get['page'];
         } else {
@@ -296,6 +382,7 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
         $limit = 10;
 
         $filter_data = array(
+            'store_id' => $store_id,
             'start' => ($page - 1) * $limit,
             'limit' => $limit
         );
@@ -321,7 +408,7 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
         $pagination->total = $category_total;
         $pagination->page = $page;
         $pagination->limit = $limit;
-        $pagination->url = $this->url->link('extension/feed/ps_google_base/category', 'user_token=' . $this->session->data['user_token'] . '&page={page}', true);
+        $pagination->url = $this->url->link('extension/feed/ps_google_base/category', 'store_id= ' . $store_id . '&user_token=' . $this->session->data['user_token'] . '&page={page}', true);
 
         $data['pagination'] = $pagination->render();
 
@@ -381,7 +468,7 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
         } else {
             $this->load->model('extension/feed/ps_google_base');
 
-            $this->model_extension_feed_ps_google_base->deleteCategory($this->request->post['category_id']);
+            $this->model_extension_feed_ps_google_base->deleteCategory($this->request->post);
 
             $json['success'] = $this->language->get('text_success');
         }

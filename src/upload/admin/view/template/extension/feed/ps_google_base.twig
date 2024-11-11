@@ -3,9 +3,20 @@
   <div class="page-header">
     <div class="container-fluid">
       <div class="pull-right">
-        <button type="button" id="button-import" data-toggle="tooltip" title="{{ button_import }}" class="btn btn-success"><i class="fa fa fa-upload"></i></button>
-        <button type="submit" form="form-feed" data-toggle="tooltip" title="{{ button_save }}" class="btn btn-primary"><i class="fa fa-save"></i></button>
-        <a href="{{ cancel }}" data-toggle="tooltip" title="{{ button_cancel }}" class="btn btn-default"><i class="fa fa-reply"></i></a></div>
+				<div class="input-group">
+					<div class="input-group-addon">
+						{{ entry_active_store }}
+						<select name="store" id="input-store" class="form-select">
+							{% for store in stores %}&nbsp;&nbsp;
+							<option value="{{ store.href }}" {% if store.store_id == store_id %} selected{% endif %}>{{ store.name }}</option>
+							{% endfor %}
+						</select>
+					</div>
+					<button type="button" id="button-import" data-toggle="tooltip" title="{{ button_import }}" class="btn btn-success"><i class="fa fa fa-upload"></i></button>
+					<button type="submit" form="form-feed" data-toggle="tooltip" title="{{ button_save }}" class="btn btn-primary"><i class="fa fa-save"></i></button>
+					<a href="{{ cancel }}" data-toggle="tooltip" title="{{ button_cancel }}" class="btn btn-default"><i class="fa fa-reply"></i></a>
+				</div>
+			</div>
       <h1>{{ heading_title }}</h1>
       <ul class="breadcrumb">
         {% for breadcrumb in breadcrumbs %}
@@ -88,9 +99,8 @@
 								</div>
 							</div>
 
-							<fieldset id="tax-group" {% if feed_ps_google_base_tax==0 %} style="display: none;" {% endif %}>
+							<fieldset id="tax-group"{% if not feed_ps_google_base_tax %} style="display: none;" {% endif %}>
 								<legend>{{ heading_tax_deffinitions }}</legend>
-
 								<table id="tax-table" class="table table-striped table-bordered table-hover">
 									<thead>
 										<tr>
@@ -107,9 +117,11 @@
 											<td class="text-left" style="position: relative;">
 												<input type="text" name="feed_ps_google_base_taxes[{{ loop.index0 }}][country]" value="{{ tax.country }}" placeholder="{{ entry_country }}" id="input-tax-country-{{ loop.index0 }}" class="form-control" autocomplete="off"/>
 												<input type="hidden" name="feed_ps_google_base_taxes[{{ loop.index0 }}][country_id]" value="{{ tax.country_id }}" id="input-tax-country-id-{{ loop.index0 }}"/>
+												<div class="text-danger">{{ error_input_tax_country[loop.index0] }}</div>
 											</td>
 											<td class="text-left">
 												<input type="text" name="feed_ps_google_base_taxes[{{ loop.index0 }}][region]" value="{{ tax.region }}" placeholder="{{ entry_region }}" id="input-tax-region-{{ loop.index0 }}" class="form-control"/>
+												<div class="text-danger">{{ error_input_tax_region[loop.index0] }}</div>
 											</td>
 											<td class="text-left">
 												<select name="feed_ps_google_base_taxes[{{ loop.index0 }}][tax_rate_id]" id="input-tax-rate-id-{{ loop.index0 }}" class="form-control">
@@ -122,6 +134,7 @@
 														{% endif %}
 													{% endfor %}
 												</select>
+												<div class="text-danger">{{ error_input_tax_rate_id[loop.index0] }}</div>
 											</td>
 											<td class="text-left">
 												<select name="feed_ps_google_base_taxes[{{ loop.index0 }}][tax_ship]" id="input-tax-ship-{{ loop.index0 }}" class="form-control">
@@ -220,11 +233,17 @@
 
 					</div>
 
+					<input type="hidden" name="store_id" value="{{ store_id }}">
         </form>
+
       </div>
     </div>
   </div>
   <script>
+		$('#input-store').on('change', function () {
+			window.location = $(this).val();
+		});
+
 		$('#input-tax-status').on('change', function () {
 			var taxGroup = $('#tax-group');
 
@@ -377,14 +396,14 @@
 			$('#category').load(this.href);
 		});
 
-		$('#category').load('index.php?route=extension/feed/ps_google_base/category&user_token={{ user_token }}');
+		$('#category').load('index.php?route=extension/feed/ps_google_base/category&store_id={{ store_id }}&user_token={{ user_token }}');
 
 		$('#button-category-add').on('click', function() {
 			$.ajax({
 				url: 'index.php?route=extension/feed/ps_google_base/addcategory&user_token={{ user_token }}',
 				type: 'post',
 				dataType: 'json',
-				data: 'google_base_category_id=' + $('input[name=\'google_base_category_id\']').val() + '&category_id=' + $('input[name=\'category_id\']').val(),
+				data: 'store_id=' + $('input[name=\'store_id\']').val() + '&google_base_category_id=' + $('input[name=\'google_base_category_id\']').val() + '&category_id=' + $('input[name=\'category_id\']').val(),
 				beforeSend: function() {
 					$('#button-category-add').button('loading');
 				},
@@ -406,7 +425,7 @@
 						$('input[name=\'google_base_category\']').val('');
 						$('input[name=\'google_base_category_id\']').val('');
 
-						$('#category').load('index.php?route=extension/feed/ps_google_base/category&user_token={{ user_token }}');
+						$('#category').load('index.php?route=extension/feed/ps_google_base/category&store_id={{ store_id }}&user_token={{ user_token }}');
 					}
 				},
 				error: function(xhr, ajaxOptions, thrownError) {
@@ -421,7 +440,7 @@
 			$.ajax({
 				url: 'index.php?route=extension/feed/ps_google_base/removecategory&user_token={{ user_token }}',
 				type: 'post',
-				data: 'category_id=' + encodeURIComponent(this.value),
+				data: 'store_id=' + $('input[name=\'store_id\']').val() + '&category_id=' + encodeURIComponent(this.value),
 				dataType: 'json',
 				crossDomain: true,
 				beforeSend: function() {

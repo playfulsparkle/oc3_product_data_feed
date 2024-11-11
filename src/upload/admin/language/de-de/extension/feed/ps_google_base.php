@@ -46,12 +46,14 @@ $_['entry_country']                = 'Land';
 $_['entry_region']                 = 'Region';
 $_['entry_tax_rate']               = 'Steuersatz';
 $_['entry_tax_ship']               = 'Versandsteuer';
+$_['entry_active_store']           = 'Aktiver Shop';
 
 // Error
 $_['error_permission']             = 'Warnung: Sie haben keine Berechtigung, den Google Base Feed zu ändern!';
+$_['error_store_id']               = 'Warnung: Das Formular enthält keine store_id!';
+$_['error_currency']               = 'Warnung: Wählen Sie eine Währung aus der Liste aus';
 $_['error_upload']                 = 'Die Datei konnte nicht hochgeladen werden!';
 $_['error_filetype']               = 'Ungültiger Dateityp!';
-$_['error_currency']               = 'Warnung: Wählen Sie eine Währung aus der Liste aus';
 $_['error_tax_country']            = 'Bitte wählen Sie ein Land für die Steuer aus.';
 $_['error_tax_region']             = 'Das Feld für die Steuerregion darf nicht leer gelassen werden.';
 $_['error_tax_rate_id']            = 'Bitte wählen Sie einen Steuersatz für die Steuer aus.';

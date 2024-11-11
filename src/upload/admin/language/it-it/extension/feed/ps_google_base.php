@@ -46,12 +46,14 @@ $_['entry_country']                = 'Paese';
 $_['entry_region']                 = 'Regione';
 $_['entry_tax_rate']               = 'Aliquota Fiscale';
 $_['entry_tax_ship']               = 'Tassa di spedizione';
+$_['entry_active_store']           = 'Negozio attivo';
 
 // Error
 $_['error_permission']             = 'Attenzione: Non hai permesso di modificare il feed di Google Base!';
+$_['error_store_id']               = 'Attenzione: Il modulo non contiene store_id!';
+$_['error_currency']               = 'Attenzione: Seleziona una valuta dalla lista';
 $_['error_upload']                 = 'Impossibile caricare il file!';
 $_['error_filetype']               = 'Tipo di file non valido!';
-$_['error_currency']               = 'Attenzione: Seleziona una valuta dalla lista';
 $_['error_tax_country']            = 'Seleziona il paese per la tassa.';
 $_['error_tax_region']             = 'Il campo regione fiscale non può essere lasciato vuoto.';
 $_['error_tax_rate_id']            = 'Seleziona l\'aliquota fiscale per la tassa';
