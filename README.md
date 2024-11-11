@@ -1,74 +1,61 @@
 # Playful Sparkle - Google Base for OpenCart 3
 
-The **Playful Sparkle - Google Base** extension allows OpenCart 3.x users to effortlessly export products to Google Merchant Center in XML format. This tool enhances product visibility on Google Shopping, making it easier for potential customers to discover and purchase your products.
+**Playful Sparkle - Google Base** extension for OpenCart 3.x+ enables seamless export of OpenCart product data to **Google Merchant Center**, ensuring that your products are accurately displayed on the Google Shopping platform. The extension includes key features such as multi-store and multi-language data feed output, the ability to exclude out-of-stock products, support for pre-tax prices, customizable tax definitions, and frontend authentication for secure access, all designed for effortless integration and efficient management.
 
-The extension simplifies the integration with Google Merchant Center, automating product feed management and enhancing online presence in the competitive market. Streamline your operations and boost sales with this essential tool for OpenCart 3.x!
-
-## What is Google Merchant Center?
-[Google Merchant Center](https://merchants.google.com) is a platform for retailers to upload product listings, allowing them to appear in Google Shopping and Google Ads. It helps increase visibility, optimize targeted advertising, and provides valuable analytics to improve your marketing strategies.
+**Google Merchant Center** is a comprehensive platform that allows businesses to upload their product data for display on Google Shopping, reaching a larger customer base. This extension allows OpenCart store owners to easily sync their product catalog with Google Merchant Center, ensuring that all relevant product details—such as pricing, availability, and tax information—are displayed correctly to potential customers. By utilizing Google Merchant Center, the extension improves marketing effectiveness, streamlines product visibility, and ensures a secure, reliable product feed management process across multiple stores and languages.
 
 ---
 
 ## Features
 
-### Playful Sparkle - Google Base
-- **Skip Out of Stock Products:** Exclude unavailable items from your feed for a better customer experience.
-- **Currency Selection:** Display prices in your chosen currency for different markets.
-- **Multi-Language Support:** Create product feeds in various languages to reach diverse customer bases.
-- **Language-Specific Feed Submission:** Choose which language-specific feed to submit to Google Merchant Center.
-- **User-Friendly Setup**: Enjoy a seamless setup process through the OpenCart interface, designed for ease of use and efficiency.
-- **Full Compatibility**: Fully compatible with OpenCart 3.x, ensuring smooth integration with your existing setup.
-- **Multilingual Support**: The extension is available in the following languages:
-  - Čeština (cs-cz)
-  - Deutsch (de-de)
-  - English (GB) (en-gb)
-  - English (US) (en-us)
-  - Español (es-es)
-  - Français (fr-fr)
-  - Magyar (hu-hu)
-  - Italiano (it-it)
-  - Русский (ru-ru)
-  - Slovenčina (sk-sk)
+- **Multi-store and multi-language data feed output**: Support for multi-language product data feed output, ensuring consistency across different stores and languages.
+- **Exclude out-of-stock products**: Only available products are included in the data feed, ensuring accurate listings.
+- **Pre-tax price support**: Provide the option to display prices excluding tax.
+- **Customizable tax definitions**: Define tax settings for selected countries, including region, tax rate, and shipping tax, ensuring compliance with global tax requirements.
+- **Frontend authentication**: Secure access to the product feed by preventing unauthorized users from accessing sensitive data.
+- **Compatibility**: Integrates smoothly with OpenCart 3.x+, supporting a range of online store setups.
+- **Multi-store Support**: Supports multi-store setups by default, making it easy to integrate across multiple OpenCart stores.
+- **Multilingual Support**: Ready for international use with languages including Čeština (cs-cz), Deutsch (de-de), English (GB) (en-gb), English (US) (en-us), Español (es-es), Français (fr-fr), Magyar (hu-hu), Italiano (it-it), Русский (ru-ru), and Slovenčina (sk-sk).
 
 ---
 
 ## Installation Instructions
 
-### 1. Download the Extension
-Download the latest **Playful Sparkle - Google Base** release from this repository.
+### Installation Instructions for OpenCart 3.x+
 
-### 2. Upload the Extension Files
-1. Log in to your OpenCart admin panel.
-2. Navigate to `Extensions > Installer`.
-3. Click the `Upload` button and upload the `ps_google_base.ocmod.zip` file.
+1. Download the latest version from this repository.
+2. Log in to your OpenCart admin panel.
+3. Navigate to `Extensions > Installer`.
+4. Click the `Upload` button and upload the `ps_google_base.ocmod.zip` file.
+5. Navigate to `Extensions > Extensions` and select `Feeds` from the `Choose the extension type` dropdown list.
+6. Locate the extension in the `Feeds` list and click the `Install` button.
+7. Click the `Edit` button, configure the extension parameters, and click the `Save` button to save your settings.
 
-### 3. Install the Extension
-4. Once uploaded, click on the green `Install` button.
-5. Navigate to `Extensions` and select `Feeds` from the dropdown.
-6. Locate the **Playful Sparkle - Google Base** extension in the list.
-7. Click on the green `Install` button.
+### Installation Instructions for OpenCart 4.x+
 
-### 4. Configure the Extension
-1. After installation, remain on the `Extensions` page and ensure `Feeds` is selected from the dropdown.
-2. Click the `Edit` button next to the installed extension.
-3. Select `Curency` from the list.
-4. Configure at least one Google category to your shop category association.
-5. Save your configuration.
+1. Download the latest version from this repository.
+2. Log in to your OpenCart admin panel.
+3. Navigate to `Extensions > Installer`.
+4. Click the `Upload` button and upload the `ps_google_base.ocmod.zip` file.
+5. Locate the extension in the `Installed Extensions` list and click the `Install` button.
+6. Navigate to `Extensions > Extensions` and select `Feeds` from the `Choose the extension type` dropdown list.
+7. Locate the extension in the `Feeds` list and click the `Install` button.
+8. Click the `Edit` button, configure the extension parameters, and click the `Save` button to save your settings.
 
 ---
 
-## Support & Feedback
+## Support & Inquiries
 
-For support or any inquiries regarding the extension, feel free to open an issue on this repository or reach out via email at [support@playfulsparkle.com](mailto:support@playfulsparkle.com).
+For assistance or inquiries related to this extension, please open an issue on this repository or contact us via email at [support@playfulsparkle.com](mailto:support@playfulsparkle.com).
 
 ---
 
 ## License
 
-This project is licensed under the GPL-3.0 license. See the [LICENSE](./LICENSE) file for more information.
+This project is distributed under the GPL-3.0 license. Please refer to the [LICENSE](./LICENSE) file for further details.
 
 ---
 
 ## Contributing
 
-We welcome contributions! If you would like to contribute to this project, please fork the repository and submit a pull request with your changes.
+We encourage contributions from the community. To contribute, please fork the repository and submit a pull request with your proposed changes.
