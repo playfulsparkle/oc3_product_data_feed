@@ -57,11 +57,11 @@
 								<div class="form-group">
 									<label for="input-google-category" class="col-sm-2 control-label">{{ entry_google_category }}</label>
 									<div class="col-sm-10">
-										<input type="text" name="google_base_category" value="" placeholder="{{ entry_google_category }}" id="input-google-category" class="form-control" />
-										<input type="hidden" name="google_base_category_id" value="" />
+										<input type="text" name="google_base_category" value="" placeholder="{{ entry_google_category }}" id="input-google-category" class="form-control">
+										<input type="hidden" name="google_base_category_id" value="">
 										<div class="input-group">
-											<input type="text" name="category" value="" placeholder="{{ entry_category }}" id="input-category" class="form-control" />
-											<input type="hidden" name="category_id" value="" />
+											<input type="text" name="category" value="" placeholder="{{ entry_category }}" id="input-category" class="form-control">
+											<input type="hidden" name="category_id" value="">
 											<span class="input-group-btn"><button type="button" id="button-category-add" data-toggle="tooltip" title="{{ button_category_add }}" class="btn btn-primary"><i class="fa fa-plus"></i></button></span>
 										</div>
 									</div>
@@ -115,12 +115,12 @@
 										{% for tax in feed_ps_google_base_taxes %}
 										<tr id="tax-row-{{ loop.index0 }}">
 											<td class="text-left" style="position: relative;">
-												<input type="text" name="feed_ps_google_base_taxes[{{ loop.index0 }}][country]" value="{{ tax.country }}" placeholder="{{ entry_country }}" id="input-tax-country-{{ loop.index0 }}" class="form-control" autocomplete="off"/>
-												<input type="hidden" name="feed_ps_google_base_taxes[{{ loop.index0 }}][country_id]" value="{{ tax.country_id }}" id="input-tax-country-id-{{ loop.index0 }}"/>
+												<input type="text" name="feed_ps_google_base_taxes[{{ loop.index0 }}][country]" value="{{ tax.country }}" placeholder="{{ entry_country }}" id="input-tax-country-{{ loop.index0 }}" class="form-control" autocomplete="off">
+												<input type="hidden" name="feed_ps_google_base_taxes[{{ loop.index0 }}][country_id]" value="{{ tax.country_id }}" id="input-tax-country-id-{{ loop.index0 }}">
 												{% if error_input_tax_country[loop.index0] %}<div class="text-danger">{{ error_input_tax_country[loop.index0] }}</div>{% endif %}
 											</td>
 											<td class="text-left">
-												<input type="text" name="feed_ps_google_base_taxes[{{ loop.index0 }}][region]" value="{{ tax.region }}" placeholder="{{ entry_region }}" id="input-tax-region-{{ loop.index0 }}" class="form-control"/>
+												<input type="text" name="feed_ps_google_base_taxes[{{ loop.index0 }}][region]" value="{{ tax.region }}" placeholder="{{ entry_region }}" id="input-tax-region-{{ loop.index0 }}" class="form-control">
 												{% if error_input_tax_region[loop.index0] %}<div class="text-danger">{{ error_input_tax_region[loop.index0] }}</div>{% endif %}
 											</td>
 											<td class="text-left">
@@ -166,28 +166,28 @@
 								<div class="form-group">
 									<label for="input-login" class="col-sm-2 control-label">{{ entry_login }}</label>
 									<div class="col-sm-10">
-										<input type="text" name="feed_ps_google_base_login" value="{{ feed_ps_google_base_login }}" placeholder="{{ entry_login }}" id="input-login" class="form-control"/>
+										<input type="text" name="feed_ps_google_base_login" value="{{ feed_ps_google_base_login }}" placeholder="{{ entry_login }}" id="input-login" class="form-control">
 									</div>
 								</div>
 
 								<div class="form-group">
 									<label for="input-password" class="col-sm-2 control-label">{{ entry_password }}</label>
 									<div class="col-sm-10">
-										<input type="text" name="feed_ps_google_base_password" value="{{ feed_ps_google_base_password }}" placeholder="{{ entry_password }}" id="input-password" class="form-control"/>
+										<input type="text" name="feed_ps_google_base_password" value="{{ feed_ps_google_base_password }}" placeholder="{{ entry_password }}" id="input-password" class="form-control">
 									</div>
 								</div>
 
 							</fieldset>
 
-							<hr/>
+							<hr>
 
 							<div class="form-group">
 								<label class="col-sm-2 control-label">{{ entry_data_feed_url }}</label>
 								<div class="col-sm-10">
 									{% for language in languages %}
 									<div class="input-group">
-										<span class="input-group-addon"><img src="language/{{ language.code }}/{{ language.code }}.png" title="{{ language.name }}"/></span>
-										<input type="text" name="data_feed_{{ language.language_id }}" value="{{ data_feed_urls[language.language_id] }}" id="input-data-feed-{{ language.language_id }}" class="form-control" readonly/>
+										<span class="input-group-addon"><img src="language/{{ language.code }}/{{ language.code }}.png" title="{{ language.name }}"></span>
+										<input type="text" name="data_feed_{{ language.language_id }}" value="{{ data_feed_urls[language.language_id] }}" id="input-data-feed-{{ language.language_id }}" class="form-control" readonly>
 										<span class="input-group-btn">
 											<button type="button" class="btn btn-success btn-copy" data-toggle="tooltip" data-input-id="input-data-feed-{{ language.language_id }}" title="{{ help_copy }}"><i class="fa fa-copy"></i></button>
 										</span>
@@ -216,16 +216,16 @@
 
 							<h3>{{ heading_getting_started }}</h3>
 							{{ text_getting_started }}
-							<hr />
+							<hr>
 							<h3>{{ heading_setup }}</h3>
 							{{ text_setup }}
-							<hr />
+							<hr>
 							<h3>{{ heading_troubleshot }}</h3>
 							{{ text_troubleshot }}
-							<hr />
+							<hr>
 							<h3>{{ heading_faq }}</h3>
 							{{ text_faq }}
-							<hr />
+							<hr>
 							<h3>{{ heading_contact }}</h3>
 							{{ text_contact }}
 
@@ -292,11 +292,11 @@
 		$('#button-tax').on('click', function () {
 			var html = '<tr id="tax-row-' + tax_row + '">';
 			html += '	<td class="text-left" style="position: relative;">';
-			html += '		<input type="text" name="feed_ps_google_base_taxes[' + tax_row + '][country]" value="" placeholder="{{ entry_country }}" id="input-tax-country-' + tax_row + '" class="form-control" autocomplete="off"/>';
-			html += '		<input type="hidden" name="feed_ps_google_base_taxes[' + tax_row + '][country_id]" value="" id="input-tax-country-id-' + tax_row + '"/>';
+			html += '		<input type="text" name="feed_ps_google_base_taxes[' + tax_row + '][country]" value="" placeholder="{{ entry_country }}" id="input-tax-country-' + tax_row + '" class="form-control" autocomplete="off">';
+			html += '		<input type="hidden" name="feed_ps_google_base_taxes[' + tax_row + '][country_id]" value="" id="input-tax-country-id-' + tax_row + '">';
 			html += '	</td>';
 			html += '	<td class="text-left">';
-			html += '		<input type="text" name="feed_ps_google_base_taxes[' + tax_row + '][region]" value="" placeholder="{{ entry_region }}" id="input-tax-region-' + tax_row + '" class="form-control"/>';
+			html += '		<input type="text" name="feed_ps_google_base_taxes[' + tax_row + '][region]" value="" placeholder="{{ entry_region }}" id="input-tax-region-' + tax_row + '" class="form-control">';
 			html += '	</td>';
 			html += '	<td class="text-left">';
 			html += '		<select name="feed_ps_google_base_taxes[' + tax_row + '][tax_rate_id]" id="input-tax-rate-id-' + tax_row + '" class="form-control">';
@@ -464,7 +464,7 @@
 		$('#button-import').on('click', function() {
 			$('#form-upload').remove();
 
-			$('body').prepend('<form enctype="multipart/form-data" id="form-upload" style="display: none;"><input type="file" name="file" /></form>');
+			$('body').prepend('<form enctype="multipart/form-data" id="form-upload" style="display: none;"><input type="file" name="file"></form>');
 
 			$('#form-upload input[name=\'file\']').trigger('click');
 
