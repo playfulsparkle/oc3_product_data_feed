@@ -134,7 +134,7 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
         }
 
         if (isset($this->request->post['feed_ps_google_base_taxes'])) {
-            $data['feed_ps_google_base_taxes'] = $this->request->post['feed_ps_google_base_taxes'];
+            $data['feed_ps_google_base_taxes'] = (array) $this->request->post['feed_ps_google_base_taxes'];
         } else {
             $base_taxes = $this->model_setting_setting->getSettingValue('feed_ps_google_base_taxes', $store_id);
 
