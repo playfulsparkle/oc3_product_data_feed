@@ -150,12 +150,16 @@ class ModelExtensionFeedPSGoogleBase extends Model
     {
         $sql = "SELECT
                 gbc2c.`google_base_category_id`,
-                (SELECT name FROM `" . DB_PREFIX . "ps_google_base_category` gbc WHERE gbc.`google_base_category_id` = gbc2c.`google_base_category_id`) AS google_base_category,
+                gbc.`name` AS google_base_category,
                 gbc2c.`category_id`,
-                (SELECT name FROM `" . DB_PREFIX . "category_description` cd WHERE cd.`category_id` = gbc2c.`category_id` AND cd.`language_id` = '" . (int) $this->config->get('config_language_id') . "') AS category
+                GROUP_CONCAT(cd1.`name` ORDER BY cp.`level` SEPARATOR ' > ') AS category
             FROM `" . DB_PREFIX . "ps_google_base_category_to_category` gbc2c
-            WHERE gbc2c.store_id = '" . (int) $data['store_id'] . "'
-            ORDER BY `google_base_category` ASC";
+            LEFT JOIN `" . DB_PREFIX . "ps_google_base_category` gbc ON (gbc.`google_base_category_id` = gbc2c.`google_base_category_id`)
+            LEFT JOIN `" . DB_PREFIX . "category_path` cp ON (cp.`category_id` = gbc2c.`category_id`)
+            LEFT JOIN `" . DB_PREFIX . "category_description` cd1 ON (cd1.`category_id` = cp.`path_id` AND cd1.`language_id` = '" . (int)$this->config->get('config_language_id') . "')
+            WHERE gbc2c.`store_id` = '" . (int)$data['store_id'] . "'
+            GROUP BY gbc2c.`google_base_category_id`, gbc2c.`category_id`
+            ORDER BY google_base_category ASC";
 
         if (isset($data['start']) || isset($data['limit'])) {
             if ($data['start'] < 0) {
