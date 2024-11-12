@@ -55,7 +55,7 @@
 								<div id="category"></div>
 
 								<div class="form-group">
-									<label class="col-sm-2 control-label" for="input-data-feed">{{ entry_google_category }}</label>
+									<label for="input-google-category" class="col-sm-2 control-label">{{ entry_google_category }}</label>
 									<div class="col-sm-10">
 										<input type="text" name="google_base_category" value="" placeholder="{{ entry_google_category }}" id="input-google-category" class="form-control" />
 										<input type="hidden" name="google_base_category_id" value="" />
@@ -70,7 +70,7 @@
 							</fieldset>
 
 							<div class="form-group">
-								<label class="col-sm-2 control-label" for="input-skip-out-of-stock">{{ entry_skip_out_of_stock }}</label>
+								<label for="input-skip-out-of-stock" class="col-sm-2 control-label">{{ entry_skip_out_of_stock }}</label>
 								<div class="col-sm-10">
 									<select name="feed_ps_google_base_skip_out_of_stock" id="input-skip-out-of-stock" class="form-control">
 										{% if feed_ps_google_base_skip_out_of_stock %}
@@ -85,7 +85,7 @@
 							</div>
 
 							<div class="form-group">
-								<label class="col-sm-2 control-label" for="input-tax-status">{{ entry_tax }}</label>
+								<label for="input-tax-status" class="col-sm-2 control-label">{{ entry_tax }}</label>
 								<div class="col-sm-10">
 									<select name="feed_ps_google_base_tax" id="input-tax-status" class="form-control">
 										{% if feed_ps_google_base_tax %}
@@ -117,11 +117,11 @@
 											<td class="text-left" style="position: relative;">
 												<input type="text" name="feed_ps_google_base_taxes[{{ loop.index0 }}][country]" value="{{ tax.country }}" placeholder="{{ entry_country }}" id="input-tax-country-{{ loop.index0 }}" class="form-control" autocomplete="off"/>
 												<input type="hidden" name="feed_ps_google_base_taxes[{{ loop.index0 }}][country_id]" value="{{ tax.country_id }}" id="input-tax-country-id-{{ loop.index0 }}"/>
-												<div class="text-danger">{{ error_input_tax_country[loop.index0] }}</div>
+												{% if error_input_tax_country[loop.index0] %}<div class="text-danger">{{ error_input_tax_country[loop.index0] }}</div>{% endif %}
 											</td>
 											<td class="text-left">
 												<input type="text" name="feed_ps_google_base_taxes[{{ loop.index0 }}][region]" value="{{ tax.region }}" placeholder="{{ entry_region }}" id="input-tax-region-{{ loop.index0 }}" class="form-control"/>
-												<div class="text-danger">{{ error_input_tax_region[loop.index0] }}</div>
+												{% if error_input_tax_region[loop.index0] %}<div class="text-danger">{{ error_input_tax_region[loop.index0] }}</div>{% endif %}
 											</td>
 											<td class="text-left">
 												<select name="feed_ps_google_base_taxes[{{ loop.index0 }}][tax_rate_id]" id="input-tax-rate-id-{{ loop.index0 }}" class="form-control">
@@ -134,7 +134,7 @@
 														{% endif %}
 													{% endfor %}
 												</select>
-												<div class="text-danger">{{ error_input_tax_rate_id[loop.index0] }}</div>
+												{% if error_input_tax_rate_id[loop.index0] %}<div class="text-danger">{{ error_input_tax_rate_id[loop.index0] }}</div>{% endif %}
 											</td>
 											<td class="text-left">
 												<select name="feed_ps_google_base_taxes[{{ loop.index0 }}][tax_ship]" id="input-tax-ship-{{ loop.index0 }}" class="form-control">
@@ -164,14 +164,14 @@
 								<legend>{{ heading_authentication }}</legend>
 
 								<div class="form-group">
-									<label class="col-sm-2 control-label" for="input-login">{{ entry_login }}</label>
+									<label for="input-login" class="col-sm-2 control-label">{{ entry_login }}</label>
 									<div class="col-sm-10">
 										<input type="text" name="feed_ps_google_base_login" value="{{ feed_ps_google_base_login }}" placeholder="{{ entry_login }}" id="input-login" class="form-control"/>
 									</div>
 								</div>
 
 								<div class="form-group">
-									<label class="col-sm-2 control-label" for="input-password">{{ entry_password }}</label>
+									<label for="input-password" class="col-sm-2 control-label">{{ entry_password }}</label>
 									<div class="col-sm-10">
 										<input type="text" name="feed_ps_google_base_password" value="{{ feed_ps_google_base_password }}" placeholder="{{ entry_password }}" id="input-password" class="form-control"/>
 									</div>
@@ -182,7 +182,7 @@
 							<hr/>
 
 							<div class="form-group">
-								<label class="col-sm-2 control-label" for="input-data-feed">{{ entry_data_feed_url }}</label>
+								<label class="col-sm-2 control-label">{{ entry_data_feed_url }}</label>
 								<div class="col-sm-10">
 									{% for language in languages %}
 									<div class="input-group">
@@ -197,7 +197,7 @@
 							</div>
 
 							<div class="form-group">
-								<label class="col-sm-2 control-label" for="input-status">{{ entry_status }}</label>
+								<label for="input-status" class="col-sm-2 control-label">{{ entry_status }}</label>
 								<div class="col-sm-10">
 									<select name="feed_ps_google_base_status" id="input-status" class="form-control">
 										{% if feed_ps_google_base_status %}
@@ -322,23 +322,15 @@
 			tax_row++;
 		});
 
-		$(window).on("load", function() {
-			var btns = $('.btn-copy');
+    $('.btn-copy').on('click', function () {
+			var copyText = $("#" + $(this).data('inputId'));
 
-				btns.each(function() {
-						$(this).on("click", function() {
-								var inputId = $(this).data('input-id');
-								var copyText = $('#' + inputId);
-
-								if (copyText.length) {
-										copyText.select();
-										copyText[0].setSelectionRange(0, 99999);
-										document.execCommand("copy");
-								}
-						});
-				});
+			if (copyText.length) {
+					copyText.select();
+					copyText[0].setSelectionRange(0, 99999);
+					document.execCommand("copy");
+			}
 		});
-
 
 		// Google Category
 		$('input[name=\'google_base_category\']').autocomplete({
