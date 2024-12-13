@@ -47,6 +47,12 @@ $_['entry_region']                 = 'Region';
 $_['entry_tax_rate']               = 'Tax Rate';
 $_['entry_tax_ship']               = 'Shipping tax';
 $_['entry_active_store']           = 'Active Store';
+$_['entry_additional_images']      = 'Include Additional Images';
+
+// Help
+$_['help_copy']                    = 'Copy URL';
+$_['help_open']                    = 'Open URL';
+$_['help_additional_images']       = 'Toggling this option will add additional images to your Google Base feed. Note that enabling this may slow down the feed generation process and increase the size of the generated XML file.';
 
 // Error
 $_['error_permission']             = 'Warning: You do not have permission to modify Google Base feed!';

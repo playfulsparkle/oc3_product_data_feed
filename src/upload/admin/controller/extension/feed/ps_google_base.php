@@ -109,6 +109,12 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
             $data['feed_ps_google_base_status'] = (bool) $this->model_setting_setting->getSettingValue('feed_ps_google_base_status', $store_id);
         }
 
+        if (isset($this->request->post['feed_ps_google_base_additional_images'])) {
+            $data['feed_ps_google_base_additional_images'] = (bool) $this->request->post['feed_ps_google_base_additional_images'];
+        } else {
+            $data['feed_ps_google_base_additional_images'] = (bool) $this->model_setting_setting->getSettingValue('feed_ps_google_base_additional_images', $store_id);
+        }
+
         if (isset($this->request->post['feed_ps_google_base_skip_out_of_stock'])) {
             $data['feed_ps_google_base_skip_out_of_stock'] = (bool) $this->request->post['feed_ps_google_base_skip_out_of_stock'];
         } else {

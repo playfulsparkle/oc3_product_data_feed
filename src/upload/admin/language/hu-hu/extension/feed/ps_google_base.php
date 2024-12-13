@@ -47,6 +47,12 @@ $_['entry_region']                 = 'Régió';
 $_['entry_tax_rate']               = 'Adókulcs';
 $_['entry_tax_ship']               = 'Szállítási adó';
 $_['entry_active_store']           = 'Aktív áruház';
+$_['entry_additional_images']      = 'További képek hozzáadása';
+
+// Help
+$_['help_copy']                    = 'URL másolása';
+$_['help_open']                    = 'URL megnyitása';
+$_['help_additional_images']       = 'Ennek az opciónak az engedélyezésével további képeket adhat hozzá a Google Base feedhez. Vegye figyelembe, hogy ez lassíthatja a feed generálási folyamatát, és növelheti a generált XML fájl méretét.';
 
 // Error
 $_['error_permission']             = 'Figyelmeztetés: Nincs jogosultsága a Google Base feed módosításához!';

@@ -47,6 +47,12 @@ $_['entry_region']                 = 'Región';
 $_['entry_tax_rate']               = 'Tasa de Impuesto';
 $_['entry_tax_ship']               = 'Impuesto de Envío';
 $_['entry_active_store']           = 'Tienda activa';
+$_['entry_additional_images']      = 'Incluir imágenes adicionales';
+
+// Help
+$_['help_copy']                    = 'Copiar URL';
+$_['help_open']                    = 'Abrir URL';
+$_['help_additional_images']       = 'Activar esta opción añadirá imágenes adicionales a su feed de Google Base. Tenga en cuenta que habilitar esta opción puede ralentizar el proceso de generación del feed y aumentar el tamaño del archivo XML generado.';
 
 // Error
 $_['error_permission']             = 'Advertencia: ¡No tienes permiso para modificar el feed de Google Base!';

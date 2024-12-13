@@ -47,6 +47,12 @@ $_['entry_region']                 = 'Kraj';
 $_['entry_tax_rate']               = 'Sazba daně';
 $_['entry_tax_ship']               = 'Doprava daně';
 $_['entry_active_store']           = 'Aktivní obchod';
+$_['entry_additional_images']      = 'Zahrnout další obrázky';
+
+// Help
+$_['help_copy']                    = 'Zkopírovat URL';
+$_['help_open']                    = 'Otevřít URL';
+$_['help_additional_images']       = 'Povolením této možnosti přidáte do svého Google Base feedu další obrázky. Mějte na paměti, že povolení této funkce může zpomalit proces generování feedu a zvýšit velikost generovaného XML souboru.';
 
 // Error
 $_['error_permission']             = 'Upozornění: Nemáte oprávnění upravovat Google Base feed!';

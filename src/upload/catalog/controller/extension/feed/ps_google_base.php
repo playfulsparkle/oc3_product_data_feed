@@ -19,6 +19,7 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
             $base_tax_definitions = (array) json_decode((string) $base_tax_definitions, true);
         }
 
+        $additional_images = (bool) $this->model_setting_setting->getSettingValue('feed_ps_google_base_additional_images', $this->config->get('config_store_id'));
         $skip_out_of_stock = (bool) $this->model_setting_setting->getSettingValue('feed_ps_google_base_skip_out_of_stock', $this->config->get('config_store_id'));
 
         if ($base_login && $base_password) {
@@ -142,16 +143,33 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
                     $xml->writeElement('g:id', $product['product_id']);
 
                     // Image link
-                    $xml->startElement('g:image_link');
-                    if ($product['image']) {
-                        $image_link = $this->model_tool_image->resize(
-                            html_entity_decode($product['image'], ENT_QUOTES, 'UTF-8'),
-                            $this->config->get('theme_' . $this->config->get('config_theme') . '_image_popup_width'),
-                            $this->config->get('theme_' . $this->config->get('config_theme') . '_image_popup_height')
-                        );
-                        $xml->text($image_link);
+                    $image_link = $product['image'] ? $this->model_tool_image->resize(
+                        html_entity_decode($product['image'], ENT_QUOTES, 'UTF-8'),
+                        $this->config->get('theme_' . $this->config->get('config_theme') . '_image_popup_width'),
+                        $this->config->get('theme_' . $this->config->get('config_theme') . '_image_popup_height')
+                    ) : null;
+
+                    if ($image_link) {
+                        $xml->startElement('g:image_link');
+                        $xml->writeCData($image_link);
+                        $xml->endElement();
                     }
-                    $xml->endElement();
+
+                    if ($additional_images && $product_images = $this->model_catalog_product->getProductImages($product['product_id'])) {
+                        foreach ($product_images as $product_image) {
+                            $image_link = $product_image['image'] ? $this->model_tool_image->resize(
+                                html_entity_decode($product_image['image'], ENT_QUOTES, 'UTF-8'),
+                                $this->config->get('theme_' . $this->config->get('config_theme') . '_image_popup_width'),
+                                $this->config->get('theme_' . $this->config->get('config_theme') . '_image_popup_height')
+                            ) : null;
+
+                            if ($image_link) {
+                                $xml->startElement('g:additional_image_link');
+                                $xml->writeCData($image_link);
+                                $xml->endElement();
+                            }
+                        }
+                    }
 
                     // Model number
                     $xml->writeElement('g:model_number', $product['model']);

@@ -47,6 +47,12 @@ $_['entry_region']                 = 'Région';
 $_['entry_tax_rate']               = 'Taux de taxe';
 $_['entry_tax_ship']               = 'Taxe sur l\'expédition';
 $_['entry_active_store']           = 'Magasin actif';
+$_['entry_additional_images']      = 'Inclure des images supplémentaires';
+
+// Help
+$_['help_copy']                    = 'Copier l\'URL';
+$_['help_open']                    = 'Ouvrir l\'URL';
+$_['help_additional_images']       = 'Activer cette option ajoutera des images supplémentaires à votre flux Google Base. Veuillez noter que cela peut ralentir le processus de génération du flux et augmenter la taille du fichier XML généré.';
 
 // Error
 $_['error_permission']             = 'Avertissement : Vous n\'avez pas l\'autorisation de modifier le flux Google Base !';
