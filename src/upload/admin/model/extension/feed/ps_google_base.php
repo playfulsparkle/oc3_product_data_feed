@@ -60,7 +60,7 @@ class ModelExtensionFeedPSGoogleBase extends Model
      * @param string $string The input string containing category data.
      * @return void
      */
-    public function import($string)
+    public function import_google_base_category($string)
     {
         $this->db->query("DELETE FROM " . DB_PREFIX . "ps_google_base_category");
 

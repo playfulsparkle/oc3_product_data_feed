@@ -298,7 +298,7 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
      *
      * @return void
      */
-    public function import()
+    public function import_google_base_category()
     {
         $this->load->language('extension/feed/ps_google_base');
 
@@ -341,7 +341,7 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
             // Get the contents of the uploaded file
             $content = file_get_contents($this->request->files['file']['tmp_name']);
 
-            $this->model_extension_feed_ps_google_base->import($content);
+            $this->model_extension_feed_ps_google_base->import_google_base_category($content);
 
             unlink($this->request->files['file']['tmp_name']);
         }

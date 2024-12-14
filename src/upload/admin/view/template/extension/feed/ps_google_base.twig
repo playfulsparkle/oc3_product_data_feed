@@ -12,7 +12,7 @@
 							{% endfor %}
 						</select>
 					</div>
-					<button type="button" id="button-import" data-toggle="tooltip" title="{{ button_import }}" class="btn btn-success"><i class="fa fa fa-upload"></i></button>
+					<button type="button" id="button-import-google-base-category" data-toggle="tooltip" title="{{ button_import }}" class="btn btn-success"><i class="fa fa fa-upload"></i></button>
 					<button type="submit" form="form-feed" data-toggle="tooltip" title="{{ button_save }}" class="btn btn-primary"><i class="fa fa-save"></i></button>
 					<a href="{{ cancel }}" data-toggle="tooltip" title="{{ button_cancel }}" class="btn btn-default"><i class="fa fa-reply"></i></a>
 				</div>
@@ -486,7 +486,7 @@
 			});
 		});
 
-		$('#button-import').on('click', function() {
+		$('#button-import-google-base-category').on('click', function() {
 			$('#form-upload').remove();
 
 			$('body').prepend('<form enctype="multipart/form-data" id="form-upload" style="display: none;"><input type="file" name="file"></form>');
@@ -502,7 +502,7 @@
 					clearInterval(timer);
 
 					$.ajax({
-						url: 'index.php?route=extension/feed/ps_google_base/import&user_token={{ user_token }}',
+						url: 'index.php?route=extension/feed/ps_google_base/import_google_base_category&user_token={{ user_token }}',
 						type: 'post',
 						dataType: 'json',
 						data: new FormData($('#form-upload')[0]),
@@ -510,10 +510,10 @@
 						contentType: false,
 						processData: false,
 						beforeSend: function() {
-							$('#button-import').button('loading');
+							$('#button-import-google-base-category').button('loading');
 						},
 						complete: function() {
-							$('#button-import').button('reset');
+							$('#button-import-google-base-category').button('reset');
 						},
 						success: function(json) {
 							$('.alert-dismissible').remove();
