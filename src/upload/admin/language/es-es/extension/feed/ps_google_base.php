@@ -23,6 +23,7 @@ $_['text_setup']                   = '<ul><li>Descarga la última lista de categ
 $_['text_troubleshot']             = '<ul><li><strong>Las categorías de Google no se muestran:</strong> Asegúrate de haber descargado la última lista de categorías de Google e importado correctamente en tu sistema. Esto es esencial para un mapeo adecuado entre tu tienda y Google Merchant Center.</li><li><strong>No hay salida del feed de productos:</strong> Verifica que la extensión de Google Base esté habilitada en el panel de administración de OpenCart. Si está habilitada y aún no ves salida, revisa la configuración de la extensión para detectar posibles errores.</li><li><strong>Los productos no aparecen en Google Merchant Center:</strong> Verifica que tus productos estén correctamente categorizados y que no haya errores en los datos de tus productos. Asegúrate de cumplir con las políticas de Google Merchant Center sobre listados de productos.</li></ul>';
 $_['text_faq']                     = '<details><summary>¿Qué es la extensión Google Base?</summary><p>La extensión Google Base ayuda a los usuarios de OpenCart 3.x a exportar sus datos de productos a Google Merchant Center, mejorando la visibilidad en Google Shopping.</p></details><details><summary>¿Cómo habilito la extensión Google Base?</summary><p>Puedes habilitar la extensión desde el panel de administración de OpenCart en la sección de Extensiones. Asegúrate de configurar los ajustes según sea necesario.</p></details><details><summary>¿Puedo personalizar mi feed de productos?</summary><p>Sí, la extensión te permite personalizar varios ajustes, incluyendo el uso de precios sin impuestos y las definiciones fiscales, asegurando que tu feed cumpla con tus necesidades.</p></details><details><summary>¿Por qué no se muestra mi feed de productos en Google Merchant Center?</summary><p>Asegúrate de que la extensión Google Base esté habilitada y de que tus categorías de productos estén correctamente asociadas con las categorías de Google. Además, revisa si hay errores en la configuración de tu feed.</p></details>';
 $_['text_contact']                 = '<p>Para más asistencia, por favor contacta a nuestro equipo de soporte:</p><ul><li><strong>Contacto:</strong> <a href="mailto:%s">%s</a></li><li><strong>Documentación:</strong> <a href="%s" target="_blank" rel="noopener noreferrer">Documentación para el usuario</a></li></ul>';
+$_['text_gbc2c_restore']           = 'El proceso de restauración es destructivo y eliminará las asociaciones de categorías actuales para la tienda seleccionada. Asegúrese de haber seleccionado la tienda correcta para importar y que el archivo de respaldo que suba (gbc2c_backup_store_x.txt) termine con el ID de la tienda (x) en la que desea restaurar.';
 
 // Column
 $_['column_google_category']       = 'Categoría de Google';
@@ -48,6 +49,11 @@ $_['entry_tax_rate']               = 'Tasa de Impuesto';
 $_['entry_tax_ship']               = 'Impuesto de Envío';
 $_['entry_active_store']           = 'Tienda activa';
 $_['entry_additional_images']      = 'Incluir imágenes adicionales';
+$_['entry_backup_restore']         = 'Respaldar/Restaurar';
+
+// Button
+$_['button_backup']                = 'Hacer copia de seguridad';
+$_['button_restore']               = 'Restaurar';
 
 // Help
 $_['help_copy']                    = 'Copiar URL';
@@ -63,3 +69,4 @@ $_['error_filetype']               = '¡Tipo de archivo no válido!';
 $_['error_tax_country']            = 'Por favor, selecciona un país para el impuesto.';
 $_['error_tax_region']             = 'El campo de región del impuesto no puede quedar vacío.';
 $_['error_tax_rate_id']            = 'Por favor, selecciona una tasa de impuesto para el impuesto';
+$_['error_no_data_to_backup']      = 'No hay datos de asociaciones de categorías disponibles para hacer una copia de seguridad.';

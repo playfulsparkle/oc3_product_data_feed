@@ -23,6 +23,7 @@ $_['text_setup']                   = '<ul><li>Téléchargez la dernière liste d
 $_['text_troubleshot']             = '<ul><li><strong>Catégories Google non affichées :</strong> Assurez-vous d\'avoir téléchargé la dernière liste des catégories Google et de l\'avoir importée dans votre système. Cela est essentiel pour une bonne correspondance entre votre boutique et Google Merchant Center.</li><li><strong>Pas de sortie de flux produit :</strong> Vérifiez que l\'extension Google Base est activée dans le panneau d\'administration OpenCart. Si elle est activée et que vous ne voyez toujours aucun résultat, vérifiez les paramètres de l\'extension pour toute mauvaise configuration.</li><li><strong>Les produits n\'apparaissent pas dans Google Merchant Center :</strong> Vérifiez que vos produits sont correctement catégorisés et qu\'il n\'y a pas d\'erreurs dans vos données produit. Assurez-vous que vous respectez les politiques de Google Merchant Center concernant les annonces de produits.</li></ul>';
 $_['text_faq']                     = '<details><summary>Qu\'est-ce que l\'extension Google Base ?</summary><p>L\'extension Google Base aide les utilisateurs d\'OpenCart 3.x à exporter leurs données produit vers Google Merchant Center, améliorant ainsi la visibilité sur Google Shopping.</p></details><details><summary>Comment activer l\'extension Google Base ?</summary><p>Vous pouvez activer l\'extension depuis le panneau d\'administration OpenCart sous la section Extensions. Assurez-vous de configurer les paramètres selon vos besoins.</p></details><details><summary>Puis-je personnaliser mon flux produit ?</summary><p>Oui, l\'extension vous permet de personnaliser divers paramètres, y compris l\'utilisation des prix hors taxes et les définitions fiscales, afin que votre flux réponde à vos besoins.</p></details><details><summary>Pourquoi mon flux produit ne s\'affiche-t-il pas dans Google Merchant Center ?</summary><p>Assurez-vous que l\'extension Google Base est activée et que vos catégories de produits sont correctement associées aux catégories Google. Vérifiez également qu\'il n\'y a pas d\'erreurs dans la configuration de votre flux.</p></details>';
 $_['text_contact']                 = '<p>Pour toute assistance supplémentaire, veuillez contacter notre équipe de support :</p><ul><li><strong>Contact :</strong> <a href="mailto:%s">%s</a></li><li><strong>Documentation :</strong> <a href="%s" target="_blank" rel="noopener noreferrer">Documentation utilisateur</a></li></ul>';
+$_['text_gbc2c_restore']           = 'Le processus de restauration est destructeur et effacera les associations de catégories actuelles pour le magasin sélectionné. Veuillez vous assurer d\'avoir sélectionné le bon magasin pour l\'importation, et que le fichier de sauvegarde que vous téléchargez (gbc2c_backup_store_x.txt) se termine par l\'ID du magasin (x) dans lequel vous souhaitez restaurer.';
 
 // Column
 $_['column_google_category']       = 'Catégorie Google';
@@ -48,6 +49,11 @@ $_['entry_tax_rate']               = 'Taux de taxe';
 $_['entry_tax_ship']               = 'Taxe sur l\'expédition';
 $_['entry_active_store']           = 'Magasin actif';
 $_['entry_additional_images']      = 'Inclure des images supplémentaires';
+$_['entry_backup_restore']         = 'Sauvegarder/Restauration';
+
+// Button
+$_['button_backup']                = 'Sauvegarder';
+$_['button_restore']               = 'Restaurer';
 
 // Help
 $_['help_copy']                    = 'Copier l\'URL';
@@ -63,3 +69,4 @@ $_['error_filetype']               = 'Type de fichier invalide !';
 $_['error_tax_country']            = 'Veuillez sélectionner un pays pour la taxe.';
 $_['error_tax_region']             = 'Le champ de région fiscale ne peut pas être laissé vide.';
 $_['error_tax_rate_id']            = 'Veuillez sélectionner un taux de taxe pour la taxe';
+$_['error_no_data_to_backup']      = 'Aucune donnée d\'association de catégories disponible pour la sauvegarde.';

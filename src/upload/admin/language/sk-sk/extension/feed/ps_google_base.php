@@ -23,6 +23,7 @@ $_['text_setup']                   = '<ul><li>Stiahnite si najnovší zoznam kat
 $_['text_troubleshot']             = '<ul><li><strong>Kategórie Google sa nezobrazujú:</strong> Uistite sa, že ste si stiahli najnovší zoznam kategórií Google a importovali ho do svojho systému. To je nevyhnutné pre správne prepojenie medzi vaším e-shopom a Google Merchant Center.</li><li><strong>Žiadny výstup produktového feedu:</strong> Potvrďte, že je rozšírenie Google Base povolené vo vašej administratívnej časti OpenCart. Ak je povolené a stále nevidíte žiadny výstup, skontrolujte nastavenia rozšírenia na prípadné nesprávne konfigurácie.</li><li><strong>Produkty sa nezobrazujú v Google Merchant Center:</strong> Overte, že sú vaše produkty správne kategorizované a že v údajoch o produktoch nie sú žiadne chyby. Uistite sa, že dodržiavate zásady Google Merchant Center týkajúce sa produktových zoznamov.</li></ul>';
 $_['text_faq']                     = '<details><summary>Čo je rozšírenie Google Base?</summary><p>Rozšírenie Google Base pomáha používateľom OpenCart 3.x exportovať údaje o svojich produktoch do Google Merchant Center, čím zvyšuje viditeľnosť na Google Shopping.</p></details><details><summary>Ako môžem aktivovať rozšírenie Google Base?</summary><p>Rozšírenie môžete aktivovať z administratívnej časti OpenCart v sekcii Rozšírenia. Uistite sa, že nastavíte potrebné konfigurácie.</p></details><details><summary>Môžem si prispôsobiť svoj produktový feed?</summary><p>Áno, rozšírenie vám umožňuje prispôsobiť rôzne nastavenia, vrátane použitia cien bez dane a definícií daní, čím zabezpečíte, že váš feed vyhovuje vašim potrebám.</p></details><details><summary>Prečo sa môj produktový feed nezobrazuje v Google Merchant Center?</summary><p>Uistite sa, že je rozšírenie Google Base povolené a že sú vaše produktové kategórie správne prepojené s kategóriami Google. Okrem toho skontrolujte, či v konfigurácii vášho feedu nie sú žiadne chyby.</p></details>';
 $_['text_contact']                 = '<p>Pre ďalšiu pomoc sa, prosím, obráťte na náš tím podpory:</p><ul><li><strong>Kontakt:</strong> <a href="mailto:%s">%s</a></li><li><strong>Dokumentácia:</strong> <a href="%s" target="_blank" rel="noopener noreferrer">Dokumentácia pre používateľov</a></li></ul>';
+$_['text_gbc2c_restore']           = 'Proces obnovy je destruktívny a vymaže aktuálne priradenia kategórií pre vybraný obchod. Uistite sa, že ste vybrali správny obchod na import, a že záložný súbor, ktorý nahrávate (gbc2c_backup_store_x.txt), končí identifikátorom obchodu (x), do ktorého chcete obnoviť údaje.';
 
 // Column
 $_['column_google_category']       = 'Kategória Google';
@@ -48,6 +49,11 @@ $_['entry_tax_rate']               = 'Sadzba dane';
 $_['entry_tax_ship']               = 'Doprava dane';
 $_['entry_active_store']           = 'Aktívny obchod';
 $_['entry_additional_images']      = 'Zahrnúť ďalšie obrázky';
+$_['entry_backup_restore']         = 'Názov súboru pre zálohovanie/obnovenie';
+
+// Button
+$_['button_backup']                = 'Zálohovať';
+$_['button_restore']               = 'Obnoviť';
 
 // Help
 $_['help_copy']                    = 'Skopírovať URL';
@@ -63,3 +69,4 @@ $_['error_filetype']               = 'Neplatný typ súboru!';
 $_['error_tax_country']            = 'Prosím, vyberte krajinu pre daň.';
 $_['error_tax_region']             = 'Pole pre daňovú oblasť nemôže zostať prázdne.';
 $_['error_tax_rate_id']            = 'Prosím, vyberte sadzbu dane pre daň.';
+$_['error_no_data_to_backup']      = 'Žiadne údaje o priradení kategórií na zálohovanie nie sú k dispozícii.';

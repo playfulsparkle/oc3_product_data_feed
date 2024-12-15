@@ -13,10 +13,8 @@ class ModelExtensionFeedPSGoogleBase extends Model
      */
     public function install()
     {
-        $this->db->query("DROP TABLE IF EXISTS `" . DB_PREFIX . "ps_google_base_category`");
-
         $this->db->query("
-			CREATE TABLE `" . DB_PREFIX . "ps_google_base_category` (
+			CREATE TABLE IF NOT EXISTS `" . DB_PREFIX . "ps_google_base_category` (
 				`google_base_category_id` INT(11) NOT NULL AUTO_INCREMENT,
 				`name` varchar(255) NOT NULL,
                 PRIMARY KEY (`google_base_category_id`),
@@ -24,10 +22,8 @@ class ModelExtensionFeedPSGoogleBase extends Model
 			) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 		");
 
-        $this->db->query("DROP TABLE IF EXISTS `" . DB_PREFIX . "ps_google_base_category_to_category`");
-
         $this->db->query("
-			CREATE TABLE `" . DB_PREFIX . "ps_google_base_category_to_category` (
+			CREATE TABLE IF NOT EXISTS `" . DB_PREFIX . "ps_google_base_category_to_category` (
                 `google_base_category_id` int(11) NOT NULL,
                 `category_id` int(11) NOT NULL,
                 `store_id` int(11) NOT NULL,
@@ -50,6 +46,36 @@ class ModelExtensionFeedPSGoogleBase extends Model
         $this->db->query("DROP TABLE IF EXISTS `" . DB_PREFIX . "ps_google_base_category_to_category`");
     }
 
+    public function backup_gbc2c($store_id)
+    {
+        $query = $this->db->query("SELECT `google_base_category_id`, `category_id`, `store_id` FROM `" . DB_PREFIX . "ps_google_base_category_to_category` WHERE `store_id` = '" . (int) $store_id . "'");
+
+        if ($query->num_rows) {
+            return $query->rows;
+        }
+
+        return array();
+    }
+
+    public function restore_gbc2c($string, $store_id)
+    {
+        $this->db->query("DELETE FROM " . DB_PREFIX . "ps_google_base_category_to_category");
+
+        $lines = explode("\n", $string);
+
+        foreach ($lines as $line) {
+            $part = explode(',', $line, 3);
+
+            if (isset($part[2]) && (int) $part[2] === $store_id) {
+                $this->db->query("INSERT INTO `" . DB_PREFIX . "ps_google_base_category_to_category` (`google_base_category_id`, `category_id`, `store_id`)
+                    SELECT '" . (int) $part[0] . "', '" . (int) $part[1] . "', '" . (int) $store_id . "'
+                    WHERE
+                        EXISTS (SELECT 1 FROM `" . DB_PREFIX . "ps_google_base_category` WHERE `google_base_category_id` = '" . (int) $part[0] . "') AND
+                        EXISTS (SELECT 1 FROM `" . DB_PREFIX . "category` WHERE `category_id` = '" . (int) $part[1] . "')");
+            }
+        }
+    }
+
     /**
      * Imports Google Base categories from a string input.
      *
@@ -60,7 +86,7 @@ class ModelExtensionFeedPSGoogleBase extends Model
      * @param string $string The input string containing category data.
      * @return void
      */
-    public function import_google_base_category($string)
+    public function import_gbc($string)
     {
         $this->db->query("DELETE FROM " . DB_PREFIX . "ps_google_base_category");
 
@@ -160,8 +186,8 @@ class ModelExtensionFeedPSGoogleBase extends Model
             FROM `" . DB_PREFIX . "ps_google_base_category_to_category` gbc2c
             LEFT JOIN `" . DB_PREFIX . "ps_google_base_category` gbc ON (gbc.`google_base_category_id` = gbc2c.`google_base_category_id`)
             LEFT JOIN `" . DB_PREFIX . "category_path` cp ON (cp.`category_id` = gbc2c.`category_id`)
-            LEFT JOIN `" . DB_PREFIX . "category_description` cd1 ON (cd1.`category_id` = cp.`path_id` AND cd1.`language_id` = '" . (int)$this->config->get('config_language_id') . "')
-            WHERE gbc2c.`store_id` = '" . (int)$data['store_id'] . "'
+            LEFT JOIN `" . DB_PREFIX . "category_description` cd1 ON (cd1.`category_id` = cp.`path_id` AND cd1.`language_id` = '" . (int) $this->config->get('config_language_id') . "')
+            WHERE gbc2c.`store_id` = '" . (int) $data['store_id'] . "'
             GROUP BY gbc2c.`google_base_category_id`, gbc2c.`category_id`
             ORDER BY google_base_category ASC";
 

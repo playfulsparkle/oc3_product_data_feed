@@ -23,6 +23,7 @@ $_['text_setup']                   = '<ul><li>Güncel Google kategorilerini <a h
 $_['text_troubleshot']             = '<ul><li><strong>Google kategorileri görüntülenmiyor:</strong> Google kategorilerinin en son listesini indirdiğinizden ve bunları sisteminize aktardığınızdan emin olun. Bu, web mağazanız ile Google Merchant Center arasında düzgün bir eşleme için önemlidir.</li><li><strong>Ürün beslemeleri görüntülenmiyor:</strong> Google Base eklentisinin OpenCart yönetici panelinizde etkin olduğunu doğrulayın. Etkinse ve hala herhangi bir çıktı görmüyorsanız, eklenti ayarlarında herhangi bir yanlış yapılandırma olup olmadığını kontrol edin.</li><li><strong>Ürünler Google Merchant sayfasında görünmüyor:</strong> Ürünlerinizin doğru şekilde kategorilendirildiğinden ve ürün verilerinizde hata olmadığından emin olun. Ürün listelemeleriyle ilgili Google Merchant politikalarına uyduğunuzdan emin olun.</li></ul>';
 $_['text_faq']                     = '<details><summary>Google Base modülü nedir?</summary><p>Google Base modülü, OpenCart 4.x kullanıcılarının ürünlerini Google Merchant Merkezi aracılığıyla Google Alışveriş sayfasında listelemesine yardımcı olur.</p></details><details><summary>Google Base modülünü nasıl aktif ederim?</summary><p>Eklentiyi OpenCart yönetici panelinde Eklentiler bölümünden etkinleştirebilirsiniz. Ayarları gerektiği gibi yapılandırdığınızdan emin olun.</p></details><details><summary>Ürün beslemelerini özelleştirebilir miyim?</summary><p>Evet, bu modül; vergi tanımları dahil olmak üzere çeşitli ayarları özelleştirmenize olanak tanır ve beslemenizin ihtiyaçlarınızı karşılamasını sağlar.</p></details><details><summary>Ürün beslemem neden Google Merchant Merkezi\'nde görünmüyor?</summary><p>Google Base uzantısının etkinleştirildiğinden ve ürün kategorilerinizin Google kategorileriyle doğru şekilde eşleştirildiğinden emin olun. Ayrıca, besleme yapılandırmanızda herhangi bir hata olup olmadığını kontrol edin.</p></details>';
 $_['text_contact']                 = '<p>Daha fazla yardım için lütfen destek ekibimizle iletişime geçin:</p><ul><li><strong>İletişim:</strong> <a href="mailto:%s">%s</a></li><li><strong>Döküman:</strong> <a href="%s" target="_blank" rel="noopener noreferrer">Kullanıcı Dökümanları</a></li></ul>';
+$_['text_gbc2c_restore']           = 'Yedekleme işlemi yıkıcıdır ve seçilen mağaza için mevcut kategori bağlantılarını siler. Lütfen doğru mağazayı içeri aktarma işlemi için seçtiğinizden emin olun ve yükleyeceğiniz yedek dosyanın (gbc2c_backup_store_x.txt) mağaza ID\'si (x) ile bittiğinden emin olun, verilerinizi geri yüklemek istediğiniz mağazayı belirtmek için.';
 
 // Column
 $_['column_google_category']       = 'Google Kategorisi';
@@ -48,6 +49,11 @@ $_['entry_tax_rate']               = 'Vergi Oranı';
 $_['entry_tax_ship']               = 'Nakliye Vergisi';
 $_['entry_active_store']           = 'Aktif Mağaza';
 $_['entry_additional_images']      = 'Ek Resimler Ekle';
+$_['entry_backup_restore']         = 'Yedekle/Geri Yükle';
+
+// Button
+$_['button_backup']                = 'Yedekle';
+$_['button_restore']               = 'Geri Yükle';
 
 // Help
 $_['help_copy']                    = 'URL\'yi Kopyala';
@@ -63,3 +69,4 @@ $_['error_filetype']               = 'Geçersiz dosya türü!';
 $_['error_tax_country']            = 'Vergi için ülke seçin.';
 $_['error_tax_region']             = 'Vergi bölgesi alanı boş bırakılamaz.';
 $_['error_tax_rate_id']            = 'Vergi için vergi oranı seçin';
+$_['error_no_data_to_backup']      = 'Yedekleme için kategori ilişkisi verisi mevcut değil.';

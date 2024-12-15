@@ -49,7 +49,11 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
             $this->response->redirect($this->url->link('marketplace/extension', 'user_token=' . $this->session->data['user_token'] . '&type=feed', true));
         }
 
-        if (isset($this->error['warning'])) {
+        if (isset($this->session->data['error'])) {
+            $data['error_warning'] = $this->session->data['error'];
+
+            unset($this->session->data['error']);
+        } else if (isset($this->error['warning'])) {
             $data['error_warning'] = $this->error['warning'];
         } else {
             $data['error_warning'] = '';
@@ -202,6 +206,8 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
             );
         }
 
+        $data['backup_gbc2c'] = $this->url->link('extension/feed/ps_google_base/backup_gbc2c', 'user_token=' . $this->session->data['user_token'] . '&store_id=' . $store_id, true);
+
         $data['text_contact'] = sprintf($this->language->get('text_contact'), self::EXTENSION_EMAIL, self::EXTENSION_EMAIL, self::EXTENSION_DOC);
 
         $data['header'] = $this->load->controller('common/header');
@@ -277,28 +283,49 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
         $this->model_extension_feed_ps_google_base->uninstall();
     }
 
-    /**
-     * Import Google categories from a text file into the database.
-     *
-     * This method handles the importation of Google categories for use in
-     * autocomplete functionality within the extension. It checks user permissions,
-     * validates the uploaded file, and processes the contents of the file to
-     * import categories into the database.
-     *
-     * The method performs the following steps:
-     * 1. Checks if the user has permission to modify the Google Base feed settings.
-     * 2. Validates the uploaded file for the correct format (must be a .txt file).
-     * 3. Handles any upload errors and prepares error messages.
-     * 4. Reads the content of the uploaded file and invokes the import method
-     *    from the model to store the categories in the database.
-     * 5. Cleans up by deleting the temporary uploaded file.
-     *
-     * If the import is successful, a success message is returned in JSON format.
-     * Otherwise, appropriate error messages are included in the response.
-     *
-     * @return void
-     */
-    public function import_google_base_category()
+    public function backup_gbc2c()
+    {
+        $this->load->language('extension/feed/ps_google_base');
+
+        if (!$this->user->hasPermission('modify', 'extension/feed/ps_google_base')) {
+            $this->session->data['error'] = $this->language->get('error_permission');
+
+            $this->response->redirect($this->url->link('extension/feed/ps_google_base', 'user_token=' . $this->session->data['user_token'] . '&store_id=' . $this->request->get['store_id'], true));
+        }
+
+        if (isset($this->request->get['store_id'])) {
+            $store_id = (int) $this->request->get['store_id'];
+        } else {
+            $store_id = 0;
+        }
+
+        $this->load->model('extension/feed/ps_google_base');
+
+        $data = $this->model_extension_feed_ps_google_base->backup_gbc2c($store_id);
+
+        if (!$data) {
+            $this->session->data['error'] = $this->language->get('error_no_data_to_backup');
+
+            $this->response->redirect($this->url->link('extension/feed/ps_google_base', 'user_token=' . $this->session->data['user_token'] . '&store_id=' . $this->request->get['store_id'], true));
+         }
+
+        $results = '';
+
+        foreach ($data as $row) {
+            $results .= $row['google_base_category_id'] . ',' . $row['category_id'] . ',' . $row['store_id'] . PHP_EOL;
+        }
+
+        $this->response->addheader('Pragma: public');
+        $this->response->addheader('Expires: 0');
+        $this->response->addheader('Content-Description: File Transfer');
+        $this->response->addheader('Content-Type: application/octet-stream');
+        $this->response->addheader('Content-Disposition: attachment; filename="gbc2c_backup_store_' . $store_id . '.txt"');
+        $this->response->addheader('Content-Transfer-Encoding: binary');
+
+        $this->response->setOutput($results);
+    }
+
+    public function restore_gbc2c()
     {
         $this->load->language('extension/feed/ps_google_base');
 
@@ -341,7 +368,86 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
             // Get the contents of the uploaded file
             $content = file_get_contents($this->request->files['file']['tmp_name']);
 
-            $this->model_extension_feed_ps_google_base->import_google_base_category($content);
+            if (isset($this->request->get['store_id'])) {
+                $store_id = (int) $this->request->get['store_id'];
+            } else {
+                $store_id = 0;
+            }
+
+            $this->model_extension_feed_ps_google_base->restore_gbc2c($content, $store_id);
+
+            unlink($this->request->files['file']['tmp_name']);
+        }
+
+        $this->response->addHeader('Content-Type: application/json');
+        $this->response->setOutput(json_encode($json));
+    }
+
+    /**
+     * Import Google categories from a text file into the database.
+     *
+     * This method handles the importation of Google categories for use in
+     * autocomplete functionality within the extension. It checks user permissions,
+     * validates the uploaded file, and processes the contents of the file to
+     * import categories into the database.
+     *
+     * The method performs the following steps:
+     * 1. Checks if the user has permission to modify the Google Base feed settings.
+     * 2. Validates the uploaded file for the correct format (must be a .txt file).
+     * 3. Handles any upload errors and prepares error messages.
+     * 4. Reads the content of the uploaded file and invokes the import method
+     *    from the model to store the categories in the database.
+     * 5. Cleans up by deleting the temporary uploaded file.
+     *
+     * If the import is successful, a success message is returned in JSON format.
+     * Otherwise, appropriate error messages are included in the response.
+     *
+     * @return void
+     */
+    public function import_gbc()
+    {
+        $this->load->language('extension/feed/ps_google_base');
+
+        $json = array();
+
+        // Check user has permission
+        if (!$this->user->hasPermission('modify', 'extension/feed/ps_google_base')) {
+            $json['error'] = $this->language->get('error_permission');
+        }
+
+        if (!$json) {
+            if (!empty($this->request->files['file']['name']) && is_file($this->request->files['file']['tmp_name'])) {
+                // Sanitize the filename
+                $filename = basename(html_entity_decode($this->request->files['file']['name'], ENT_QUOTES, 'UTF-8'));
+
+                // Allowed file extension types
+                if (utf8_strtolower(utf8_substr(strrchr($filename, '.'), 1)) != 'txt') {
+                    $json['error'] = $this->language->get('error_filetype');
+                }
+
+                // Allowed file mime types
+                if ($this->request->files['file']['type'] != 'text/plain') {
+                    $json['error'] = $this->language->get('error_filetype');
+                }
+
+                // Return any upload error
+                if ($this->request->files['file']['error'] != UPLOAD_ERR_OK) {
+                    $json['error'] = $this->language->get('error_upload_' . $this->request->files['file']['error']);
+                }
+            } else {
+                $json['error'] = $this->language->get('error_upload');
+            }
+        }
+
+        if (!$json) {
+            $json['success'] = $this->language->get('text_success');
+
+            $this->load->model('extension/feed/ps_google_base');
+
+            // Get the contents of the uploaded file
+            $content = file_get_contents($this->request->files['file']['tmp_name']);
+
+            $this->model_extension_feed_ps_google_base->import_gbc($content);
 
             unlink($this->request->files['file']['tmp_name']);
         }

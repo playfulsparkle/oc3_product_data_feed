@@ -23,6 +23,7 @@ $_['text_setup']                   = '<ul><li>Töltse le a legfrissebb Google ka
 $_['text_troubleshot']             = '<ul><li><strong>Google kategóriák nem jelennek meg:</strong> Győződjön meg arról, hogy letöltötte a legfrissebb Google kategóriák listáját, és importálta azokat a rendszerébe. Ez elengedhetetlen a webshop és a Google Merchant Center közötti helyes térképezéshez.</li><li><strong>Nincs termék feed kimenet:</strong> Ellenőrizze, hogy a Google Base kiterjesztés engedélyezve van-e az OpenCart admin panelen. Ha engedélyezve van, és még mindig nem lát kimenetet, nézze át a kiterjesztés beállításait, hogy nincs-e hiba a konfigurációban.</li><li><strong>Termékek nem jelennek meg a Google Merchant Centerben:</strong> Ellenőrizze, hogy termékei helyesen kategorizálva vannak-e, és hogy nincsenek-e hibák a termékadataiban. Győződjön meg arról, hogy megfelel a Google Merchant Center terméklistázási irányelveinek.</li></ul>';
 $_['text_faq']                     = '<details><summary>Mi az a Google Base kiterjesztés?</summary><p>A Google Base kiterjesztés segít az OpenCart 3.x felhasználóknak exportálni termékadataikat a Google Merchant Centerbe, növelve ezzel a láthatóságot a Google Shoppingon.</p></details><details><summary>Hogyan tudom engedélyezni a Google Base kiterjesztést?</summary><p>A kiterjesztést az OpenCart admin panelen, az Extensions szekció alatt tudja engedélyezni. Győződjön meg arról, hogy a beállításokat szükség szerint konfigurálta.</p></details><details><summary>Testreszabhatom a termék feedemet?</summary><p>Igen, a kiterjesztés lehetővé teszi különböző beállítások testreszabását, beleértve a nettó árak használatát és az adódefiníciókat, biztosítva ezzel, hogy a feed megfeleljen az igényeinek.</p></details><details><summary>Miért nem jelenik meg a termék feedem a Google Merchant Centerben?</summary><p>Győződjön meg arról, hogy a Google Base kiterjesztés engedélyezve van, és hogy termékkategóriái helyesen vannak társítva a Google kategóriákhoz. Ezenkívül ellenőrizze, hogy nincsenek-e hibák a feed konfigurációjában.</p></details>';
 $_['text_contact']                 = '<p>További segítségért kérjük, lépjen kapcsolatba támogatási csapatunkkal:</p><ul><li><strong>Kapcsolat:</strong> <a href="mailto:%s">%s</a></li><li><strong>Dokumentáció:</strong> <a href="%s" target="_blank" rel="noopener noreferrer">Felhasználói dokumentáció</a></li></ul>';
+$_['text_gbc2c_restore']           = 'A visszaállítási folyamat destruktív, és törölni fogja a kiválasztott áruház aktuális kategória-asszociációit. Kérjük, győződjön meg arról, hogy a megfelelő bolt van kiválasztva az importáláshoz, és hogy a feltöltött biztonsági mentési fájl (gbc2c_backup_store_x.txt) azzal a boltazonosítóval (x) végződik, ahová az adatokat vissza szeretné állítani.';
 
 // Column
 $_['column_google_category']       = 'Google Kategória';
@@ -48,6 +49,11 @@ $_['entry_tax_rate']               = 'Adókulcs';
 $_['entry_tax_ship']               = 'Szállítási adó';
 $_['entry_active_store']           = 'Aktív áruház';
 $_['entry_additional_images']      = 'További képek hozzáadása';
+$_['entry_backup_restore']         = 'Mentés/Visszaállítás';
+
+// Button
+$_['button_backup']                = 'Biztonsági mentés';
+$_['button_restore']               = 'Visszaállítás';
 
 // Help
 $_['help_copy']                    = 'URL másolása';
@@ -63,3 +69,4 @@ $_['error_filetype']               = 'Érvénytelen fájltípus!';
 $_['error_tax_country']            = 'Kérem, válassza ki az adó országát.';
 $_['error_tax_region']             = 'Az adóregionális mező nem maradhat üresen.';
 $_['error_tax_rate_id']            = 'Kérem, válassza ki az adókulcsot az adóhoz.';
+$_['error_no_data_to_backup']      = 'Nincs elérhető kategória hozzárendelési adat a mentéshez.';
