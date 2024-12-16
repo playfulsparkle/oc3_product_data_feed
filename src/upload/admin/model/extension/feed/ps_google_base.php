@@ -59,15 +59,13 @@ class ModelExtensionFeedPSGoogleBase extends Model
 
     public function restore_gbc2c($string, $store_id)
     {
-        $this->db->query("DELETE FROM " . DB_PREFIX . "ps_google_base_category_to_category");
-
         $lines = explode("\n", $string);
 
         foreach ($lines as $line) {
             $part = explode(',', $line, 3);
 
             if (isset($part[2]) && (int) $part[2] === $store_id) {
-                $this->db->query("INSERT INTO `" . DB_PREFIX . "ps_google_base_category_to_category` (`google_base_category_id`, `category_id`, `store_id`)
+                $this->db->query("REPLACE INTO `" . DB_PREFIX . "ps_google_base_category_to_category` (`google_base_category_id`, `category_id`, `store_id`)
                     SELECT '" . (int) $part[0] . "', '" . (int) $part[1] . "', '" . (int) $store_id . "'
                     WHERE
                         EXISTS (SELECT 1 FROM `" . DB_PREFIX . "ps_google_base_category` WHERE `google_base_category_id` = '" . (int) $part[0] . "') AND
