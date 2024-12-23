@@ -62,6 +62,12 @@ class ModelExtensionFeedPSGoogleBase extends Model
         $lines = explode("\n", $string);
 
         foreach ($lines as $line) {
+            $line = trim($line);
+
+            if ($line === '') {
+                continue;
+            }
+
             $part = explode(',', $line, 3);
 
             if (isset($part[2]) && (int) $part[2] === $store_id) {
@@ -91,12 +97,14 @@ class ModelExtensionFeedPSGoogleBase extends Model
         $lines = explode("\n", $string);
 
         foreach ($lines as $line) {
-            if (substr($line, 0, 1) != '#') {
-                $part = explode(' - ', $line, 2);
+            $line = trim($line);
 
-                if (isset($part[1])) {
-                    $this->db->query("INSERT INTO " . DB_PREFIX . "ps_google_base_category SET google_base_category_id = '" . (int) $part[0] . "', name = '" . $this->db->escape($part[1]) . "'");
-                }
+            if ($line === '' || substr($line, 0, 1) === '#') {
+                continue;
+            }
+
+            if (preg_match('/^(\d+)\s*-\s*(.+)$/', $line, $matches)) {
+                $this->db->query("INSERT INTO " . DB_PREFIX . "ps_google_base_category SET google_base_category_id = '" . (int) $matches[1] . "', name = '" . $this->db->escape($matches[2]) . "'");
             }
         }
     }
