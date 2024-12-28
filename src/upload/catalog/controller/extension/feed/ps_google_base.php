@@ -9,8 +9,8 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
 
         $this->load->model('setting/setting');
 
-        $base_login = $this->model_setting_setting->getSettingValue('feed_ps_google_base_login', $this->config->get('config_store_id'));
-        $base_password = $this->model_setting_setting->getSettingValue('feed_ps_google_base_password', $this->config->get('config_store_id'));
+        $base_login = (string) $this->model_setting_setting->getSettingValue('feed_ps_google_base_login', $this->config->get('config_store_id'));
+        $base_password = (string) $this->model_setting_setting->getSettingValue('feed_ps_google_base_password', $this->config->get('config_store_id'));
         $base_tax_status = (bool) $this->model_setting_setting->getSettingValue('feed_ps_google_base_tax', $this->config->get('config_store_id'));
 
         $base_tax_definitions = $this->model_setting_setting->getSettingValue('feed_ps_google_base_taxes', $this->config->get('config_store_id'));

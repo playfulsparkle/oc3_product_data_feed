@@ -126,15 +126,15 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
         }
 
         if (isset($this->request->post['feed_ps_google_base_login'])) {
-            $data['feed_ps_google_base_login'] = $this->request->post['feed_ps_google_base_login'];
+            $data['feed_ps_google_base_login'] = (string) $this->request->post['feed_ps_google_base_login'];
         } else {
-            $data['feed_ps_google_base_login'] = $this->model_setting_setting->getSettingValue('feed_ps_google_base_login', $store_id);
+            $data['feed_ps_google_base_login'] = (string) $this->model_setting_setting->getSettingValue('feed_ps_google_base_login', $store_id);
         }
 
         if (isset($this->request->post['feed_ps_google_base_password'])) {
-            $data['feed_ps_google_base_password'] = $this->request->post['feed_ps_google_base_password'];
+            $data['feed_ps_google_base_password'] = (string) $this->request->post['feed_ps_google_base_password'];
         } else {
-            $data['feed_ps_google_base_password'] = $this->model_setting_setting->getSettingValue('feed_ps_google_base_password', $store_id);
+            $data['feed_ps_google_base_password'] = (string) $this->model_setting_setting->getSettingValue('feed_ps_google_base_password', $store_id);
         }
 
         if (isset($this->request->post['feed_ps_google_base_tax'])) {
