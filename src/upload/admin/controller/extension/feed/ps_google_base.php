@@ -148,11 +148,9 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
         } else {
             $base_taxes = $this->model_setting_setting->getSettingValue('feed_ps_google_base_taxes', $store_id);
 
-            if (!is_array($base_taxes)) {
-                $base_taxes = (array) json_decode((string) $base_taxes, true);
-            }
+            $base_taxes = json_decode((string) $base_taxes, true);
 
-            $data['feed_ps_google_base_taxes'] = $base_taxes;
+            $data['feed_ps_google_base_taxes'] = (json_last_error() === JSON_ERROR_NONE) ? (array) $base_taxes : array();
         }
 
         $this->load->model('localisation/language');

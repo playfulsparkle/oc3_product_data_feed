@@ -15,9 +15,9 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
 
         $base_tax_definitions = $this->model_setting_setting->getSettingValue('feed_ps_google_base_taxes', $this->config->get('config_store_id'));
 
-        if (!is_array($base_tax_definitions)) {
-            $base_tax_definitions = (array) json_decode((string) $base_tax_definitions, true);
-        }
+        $base_tax_definitions = json_decode((string) $base_tax_definitions, true);
+
+        $base_tax_definitions = (json_last_error() === JSON_ERROR_NONE) ? (array) $base_tax_definitions : array();
 
         $additional_images = (bool) $this->model_setting_setting->getSettingValue('feed_ps_google_base_additional_images', $this->config->get('config_store_id'));
         $skip_out_of_stock = (bool) $this->model_setting_setting->getSettingValue('feed_ps_google_base_skip_out_of_stock', $this->config->get('config_store_id'));
