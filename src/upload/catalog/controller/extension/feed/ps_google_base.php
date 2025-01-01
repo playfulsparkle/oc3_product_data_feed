@@ -17,7 +17,10 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
 
         $base_tax_definitions = json_decode((string) $base_tax_definitions, true);
 
-        $base_tax_definitions = (json_last_error() === JSON_ERROR_NONE) ? (array) $base_tax_definitions : array();
+        /**
+         * @var array $base_tax_definitions
+         */
+        $base_tax_definitions = json_last_error() === JSON_ERROR_NONE ? $base_tax_definitions : array();
 
         $additional_images = (bool) $this->model_setting_setting->getSettingValue('feed_ps_google_base_additional_images', $this->config->get('config_store_id'));
         $skip_out_of_stock = (bool) $this->model_setting_setting->getSettingValue('feed_ps_google_base_skip_out_of_stock', $this->config->get('config_store_id'));
@@ -143,8 +146,8 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
                     $xml->writeElement('g:id', $product['product_id']);
 
                     // Image link
-                    $image_link = $product['image'] ? $this->model_tool_image->resize(
-                        html_entity_decode($product['image'], ENT_QUOTES, 'UTF-8'),
+                    $image_link = !empty($product['image']) ? $this->model_tool_image->resize(
+                        $product['image'],
                         $this->config->get('theme_' . $this->config->get('config_theme') . '_image_popup_width'),
                         $this->config->get('theme_' . $this->config->get('config_theme') . '_image_popup_height')
                     ) : null;
@@ -157,8 +160,8 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
 
                     if ($additional_images && $product_images = $this->model_catalog_product->getProductImages($product['product_id'])) {
                         foreach ($product_images as $product_image) {
-                            $image_link = $product_image['image'] ? $this->model_tool_image->resize(
-                                html_entity_decode($product_image['image'], ENT_QUOTES, 'UTF-8'),
+                            $image_link = !empty($product_image['image']) ? $this->model_tool_image->resize(
+                                $product_image['image'],
                                 $this->config->get('theme_' . $this->config->get('config_theme') . '_image_popup_width'),
                                 $this->config->get('theme_' . $this->config->get('config_theme') . '_image_popup_height')
                             ) : null;
