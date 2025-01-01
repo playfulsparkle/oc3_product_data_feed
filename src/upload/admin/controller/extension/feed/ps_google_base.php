@@ -148,9 +148,12 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
         } else {
             $base_taxes = $this->model_setting_setting->getSettingValue('feed_ps_google_base_taxes', $store_id);
 
+            /**
+             * @var array $base_taxes
+             */
             $base_taxes = json_decode((string) $base_taxes, true);
 
-            $data['feed_ps_google_base_taxes'] = (json_last_error() === JSON_ERROR_NONE) ? (array) $base_taxes : array();
+            $data['feed_ps_google_base_taxes'] = json_last_error() === JSON_ERROR_NONE ? $base_taxes : array();
         }
 
         $this->load->model('localisation/language');
@@ -305,7 +308,7 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
             $this->session->data['error'] = $this->language->get('error_no_data_to_backup');
 
             $this->response->redirect($this->url->link('extension/feed/ps_google_base', 'user_token=' . $this->session->data['user_token'] . '&store_id=' . $this->request->get['store_id'], true));
-         }
+        }
 
         $results = '';
 
