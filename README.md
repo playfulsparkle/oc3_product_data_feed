@@ -2,6 +2,8 @@
 
 **Playful Sparkle - Google Base** extension for OpenCart 3.x+ enables seamless export of OpenCart product data to **Google Merchant Center**, ensuring that your products are accurately displayed on the Google Shopping platform. The extension includes key features such as multi-store and multi-language data feed output, the ability to exclude out-of-stock products, support for pre-tax prices, customizable tax definitions, and frontend authentication for secure access, all designed for effortless integration and efficient management.
 
+## About Google Merchant Center
+
 **Google Merchant Center** is a comprehensive platform that allows businesses to upload their product data for display on Google Shopping, reaching a larger customer base. This extension allows OpenCart store owners to easily sync their product catalog with Google Merchant Center, ensuring that all relevant product details—such as pricing, availability, and tax information—are displayed correctly to potential customers. By utilizing Google Merchant Center, the extension improves marketing effectiveness, streamlines product visibility, and ensures a secure, reliable product feed management process across multiple stores and languages.
 
 ---

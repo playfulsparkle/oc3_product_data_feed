@@ -8,6 +8,8 @@ the ability to exclude out-of-stock products, support for pre-tax prices,
 customizable tax definitions, and frontend authentication for secure access,
 all designed for effortless integration and efficient management.
 
+About Google Merchant Center
+
 Google Merchant Center is a comprehensive platform that allows businesses to
 upload their product data for display on Google Shopping, reaching a larger
 customer base. This extension allows OpenCart store owners to easily sync their
