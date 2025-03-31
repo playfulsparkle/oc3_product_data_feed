@@ -3,17 +3,17 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
 {
     public function index()
     {
-        if (!$this->config->get('feed_ps_google_base_status')) {
+        if (!$this->config->get('feed_ps_product_data_feed_status')) {
             return;
         }
 
         $this->load->model('setting/setting');
 
-        $base_login = (string) $this->model_setting_setting->getSettingValue('feed_ps_google_base_login', $this->config->get('config_store_id'));
-        $base_password = (string) $this->model_setting_setting->getSettingValue('feed_ps_google_base_password', $this->config->get('config_store_id'));
-        $base_tax_status = (bool) $this->model_setting_setting->getSettingValue('feed_ps_google_base_tax', $this->config->get('config_store_id'));
+        $base_login = (string) $this->model_setting_setting->getSettingValue('feed_ps_product_data_feed_login', $this->config->get('config_store_id'));
+        $base_password = (string) $this->model_setting_setting->getSettingValue('feed_ps_product_data_feed_password', $this->config->get('config_store_id'));
+        $base_tax_status = (bool) $this->model_setting_setting->getSettingValue('feed_ps_product_data_feed_tax', $this->config->get('config_store_id'));
 
-        $base_tax_definitions = $this->model_setting_setting->getSettingValue('feed_ps_google_base_taxes', $this->config->get('config_store_id'));
+        $base_tax_definitions = $this->model_setting_setting->getSettingValue('feed_ps_product_data_feed_taxes', $this->config->get('config_store_id'));
 
         $base_tax_definitions = json_decode((string) $base_tax_definitions, true);
 
@@ -22,27 +22,27 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
          */
         $base_tax_definitions = json_last_error() === JSON_ERROR_NONE ? $base_tax_definitions : array();
 
-        $additional_images = (bool) $this->model_setting_setting->getSettingValue('feed_ps_google_base_additional_images', $this->config->get('config_store_id'));
-        $skip_out_of_stock = (bool) $this->model_setting_setting->getSettingValue('feed_ps_google_base_skip_out_of_stock', $this->config->get('config_store_id'));
+        $additional_images = (bool) $this->model_setting_setting->getSettingValue('feed_ps_product_data_feed_additional_images', $this->config->get('config_store_id'));
+        $skip_out_of_stock = (bool) $this->model_setting_setting->getSettingValue('feed_ps_product_data_feed_skip_out_of_stock', $this->config->get('config_store_id'));
 
         if ($base_login && $base_password) {
             header('Cache-Control: no-cache, must-revalidate, max-age=0');
 
             if (!isset($_SERVER['PHP_AUTH_USER']) || !isset($_SERVER['PHP_AUTH_PW'])) {
-                header('WWW-Authenticate: Basic realm="ps_google_base"');
+                header('WWW-Authenticate: Basic realm="ps_product_data_feed"');
                 header('HTTP/1.1 401 Unauthorized');
                 echo 'Invalid credentials';
                 exit;
             } else {
                 if ($_SERVER['PHP_AUTH_USER'] !== $base_login || $_SERVER['PHP_AUTH_PW'] !== $base_password) {
-                    header('WWW-Authenticate: Basic realm="ps_google_base"');
+                    header('WWW-Authenticate: Basic realm="ps_product_data_feed"');
                     header('HTTP/1.1 401 Unauthorized');
                     echo 'Invalid credentials';
                     exit;
                 }
             }
         }
-        $this->load->model('extension/feed/ps_google_base');
+        $this->load->model('extension/feed/ps_product_data_feed');
         $this->load->model('catalog/category');
         $this->load->model('catalog/product');
         $this->load->model('tool/image');
@@ -84,7 +84,7 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
 
         if (is_array($base_tax_definitions)) {
             foreach ($base_tax_definitions as $base_tax_definition) {
-                $tax_rate_info = $this->model_extension_feed_ps_google_base->getTaxRate($base_tax_definition['tax_rate_id']);
+                $tax_rate_info = $this->model_extension_feed_ps_product_data_feed->getTaxRate($base_tax_definition['tax_rate_id']);
 
                 if ($tax_rate_info) {
                     $taxes[] = array(
@@ -100,7 +100,7 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
         $product_data = array();
         $category_data = array();
 
-        $google_base_categories = $this->model_extension_feed_ps_google_base->getCategories();
+        $google_base_categories = $this->model_extension_feed_ps_product_data_feed->getCategories();
 
         foreach ($google_base_categories as $google_base_category) {
             $filter_data = array(
@@ -213,7 +213,7 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
 
                         $xml->writeElement('g:sale_price', $this->currency->format($formatted_price, $this->config->get('config_currency'), 0, false) . ' ' . $this->config->get('config_currency'));
 
-                        $sale_dates = $this->model_extension_feed_ps_google_base->getSpecialPriceDatesByProductId($product['product_id']);
+                        $sale_dates = $this->model_extension_feed_ps_product_data_feed->getSpecialPriceDatesByProductId($product['product_id']);
 
                         if (
                             isset($sale_dates['date_start'], $sale_dates['date_end']) &&

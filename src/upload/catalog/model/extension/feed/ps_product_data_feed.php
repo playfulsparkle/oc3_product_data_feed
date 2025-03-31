@@ -2,16 +2,16 @@
 class ModelExtensionFeedPSGoogleBase extends Model
 {
     /**
-     * Retrieves all categories associated with Google Base categories.
+     * Retrieves all categories associated with Product Data Feed categories.
      *
      * This method queries the database to get a list of categories
-     * linked to Google Base categories along with their names in the
-     * current language. The results are sorted by the Google Base
+     * linked to Product Data Feed categories along with their names in the
+     * current language. The results are sorted by the Product Data Feed
      * category name in ascending order.
      *
      * @return array An array of categories with the following keys:
-     *               - google_base_category_id: ID of the Google Base category
-     *               - google_base_category: Name of the Google Base category
+     *               - google_base_category_id: ID of the Product Data Feed category
+     *               - google_base_category: Name of the Product Data Feed category
      *               - category_id: ID of the associated category
      *               - category: Name of the associated category
      */
@@ -19,10 +19,10 @@ class ModelExtensionFeedPSGoogleBase extends Model
     {
         $query = $this->db->query("SELECT
                 gbc2c.`google_base_category_id`,
-                (SELECT name FROM `" . DB_PREFIX . "ps_google_base_category` gbc WHERE gbc.`google_base_category_id` = gbc2c.`google_base_category_id`) AS google_base_category,
+                (SELECT name FROM `" . DB_PREFIX . "ps_product_data_feed_category` gbc WHERE gbc.`google_base_category_id` = gbc2c.`google_base_category_id`) AS google_base_category,
                 gbc2c.`category_id`,
                 (SELECT name FROM `" . DB_PREFIX . "category_description` cd WHERE cd.`category_id` = gbc2c.`category_id` AND cd.`language_id` = '" . (int) $this->config->get('config_language_id') . "') AS category
-            FROM `" . DB_PREFIX . "ps_google_base_category_to_category` gbc2c
+            FROM `" . DB_PREFIX . "ps_product_data_feed_category_to_category` gbc2c
             WHERE gbc2c.`store_id` = '" . (int) $this->config->get('config_store_id') . "'
             ORDER BY `google_base_category` ASC");
 
@@ -30,17 +30,17 @@ class ModelExtensionFeedPSGoogleBase extends Model
     }
 
     /**
-     * Gets the total number of Google Base categories.
+     * Gets the total number of Product Data Feed categories.
      *
      * This method queries the database to count the total number of
-     * records in the `ps_google_base_category_to_category` table,
-     * which represents the number of Google Base categories.
+     * records in the `ps_product_data_feed_category_to_category` table,
+     * which represents the number of Product Data Feed categories.
      *
-     * @return int The total number of Google Base categories.
+     * @return int The total number of Product Data Feed categories.
      */
     public function getTotalCategories()
     {
-        $query = $this->db->query("SELECT COUNT(*) AS total FROM `" . DB_PREFIX . "ps_google_base_category_to_category` WHERE `store_id` = '" . (int) $this->config->get('config_store_id') . "'");
+        $query = $this->db->query("SELECT COUNT(*) AS total FROM `" . DB_PREFIX . "ps_product_data_feed_category_to_category` WHERE `store_id` = '" . (int) $this->config->get('config_store_id') . "'");
 
         return $query->row['total'];
     }

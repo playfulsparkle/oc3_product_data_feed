@@ -1,7 +1,7 @@
 {
-  "name": "oc3_google_base",
-  "version": "1.0.4",
-  "description": "Playful Sparkle - Google Base for OpenCart 3",
+  "name": "oc3_product_data_feed",
+  "version": "1.0.5",
+  "description": "Playful Sparkle - Product Data Feed for OpenCart 3",
   "main": "index.js",
   "scripts": {
     "compress": "node compress.js"
@@ -21,6 +21,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/playfulsparkle/oc3_google_base.git"
+    "url": "git+https://github.com/playfulsparkle/oc3_product_data_feed.git"
   }
 }

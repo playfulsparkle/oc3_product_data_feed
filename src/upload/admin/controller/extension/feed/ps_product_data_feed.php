@@ -9,25 +9,25 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
     /**
      * @var string The documentation URL for the extension.
      */
-    const EXTENSION_DOC = 'https://github.com/playfulsparkle/oc3_google_base.git';
+    const EXTENSION_DOC = 'https://github.com/playfulsparkle/oc3_product_data_feed.git';
 
     private $error = array();
 
     /**
-     * Displays the Google Base feed settings page.
+     * Displays the Product Data Feed feed settings page.
      *
-     * This method initializes the settings page for the Google Base feed extension.
+     * This method initializes the settings page for the Product Data Feed feed extension.
      * It loads the necessary language files, sets the page title, prepares breadcrumb
      * navigation, and collects configuration data. It also retrieves available languages
      * and tax rates, and passes all relevant data to the view for rendering.
      *
      * The method performs the following steps:
-     * - Loads language definitions for the Google Base feed.
+     * - Loads language definitions for the Product Data Feed feed.
      * - Sets the document title based on the language strings.
      * - Constructs breadcrumb links for navigation.
      * - Prepares the action URL for saving settings and a back link.
      * - Loads available languages and generates data feed URLs for each language.
-     * - Collects configuration options related to the Google Base feed.
+     * - Collects configuration options related to the Product Data Feed feed.
      * - Loads tax rates and prepares them for display.
      * - Renders the settings view with all the collected data.
      *
@@ -35,14 +35,14 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
      */
     public function index()
     {
-        $this->load->language('extension/feed/ps_google_base');
+        $this->load->language('extension/feed/ps_product_data_feed');
 
         $this->document->setTitle($this->language->get('heading_title'));
 
         $this->load->model('setting/setting');
 
         if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
-            $this->model_setting_setting->editSetting('feed_ps_google_base', $this->request->post, $this->request->get['store_id']);
+            $this->model_setting_setting->editSetting('feed_ps_product_data_feed', $this->request->post, $this->request->get['store_id']);
 
             $this->session->data['success'] = $this->language->get('text_success');
 
@@ -98,62 +98,62 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
 
         $data['breadcrumbs'][] = array(
             'text' => $this->language->get('heading_title'),
-            'href' => $this->url->link('extension/feed/ps_google_base', 'user_token=' . $this->session->data['user_token'] . '&store_id=' . $store_id, true)
+            'href' => $this->url->link('extension/feed/ps_product_data_feed', 'user_token=' . $this->session->data['user_token'] . '&store_id=' . $store_id, true)
         );
 
-        $data['action'] = $this->url->link('extension/feed/ps_google_base', 'user_token=' . $this->session->data['user_token'] . '&store_id=' . $store_id, true);
+        $data['action'] = $this->url->link('extension/feed/ps_product_data_feed', 'user_token=' . $this->session->data['user_token'] . '&store_id=' . $store_id, true);
 
         $data['cancel'] = $this->url->link('marketplace/extension', 'user_token=' . $this->session->data['user_token'] . '&type=feed', true);
 
         $data['user_token'] = $this->session->data['user_token'];
 
-        if (isset($this->request->post['feed_ps_google_base_status'])) {
-            $data['feed_ps_google_base_status'] = (bool) $this->request->post['feed_ps_google_base_status'];
+        if (isset($this->request->post['feed_ps_product_data_feed_status'])) {
+            $data['feed_ps_product_data_feed_status'] = (bool) $this->request->post['feed_ps_product_data_feed_status'];
         } else {
-            $data['feed_ps_google_base_status'] = (bool) $this->model_setting_setting->getSettingValue('feed_ps_google_base_status', $store_id);
+            $data['feed_ps_product_data_feed_status'] = (bool) $this->model_setting_setting->getSettingValue('feed_ps_product_data_feed_status', $store_id);
         }
 
-        if (isset($this->request->post['feed_ps_google_base_additional_images'])) {
-            $data['feed_ps_google_base_additional_images'] = (bool) $this->request->post['feed_ps_google_base_additional_images'];
+        if (isset($this->request->post['feed_ps_product_data_feed_additional_images'])) {
+            $data['feed_ps_product_data_feed_additional_images'] = (bool) $this->request->post['feed_ps_product_data_feed_additional_images'];
         } else {
-            $data['feed_ps_google_base_additional_images'] = (bool) $this->model_setting_setting->getSettingValue('feed_ps_google_base_additional_images', $store_id);
+            $data['feed_ps_product_data_feed_additional_images'] = (bool) $this->model_setting_setting->getSettingValue('feed_ps_product_data_feed_additional_images', $store_id);
         }
 
-        if (isset($this->request->post['feed_ps_google_base_skip_out_of_stock'])) {
-            $data['feed_ps_google_base_skip_out_of_stock'] = (bool) $this->request->post['feed_ps_google_base_skip_out_of_stock'];
+        if (isset($this->request->post['feed_ps_product_data_feed_skip_out_of_stock'])) {
+            $data['feed_ps_product_data_feed_skip_out_of_stock'] = (bool) $this->request->post['feed_ps_product_data_feed_skip_out_of_stock'];
         } else {
-            $data['feed_ps_google_base_skip_out_of_stock'] = (bool) $this->model_setting_setting->getSettingValue('feed_ps_google_base_skip_out_of_stock', $store_id);
+            $data['feed_ps_product_data_feed_skip_out_of_stock'] = (bool) $this->model_setting_setting->getSettingValue('feed_ps_product_data_feed_skip_out_of_stock', $store_id);
         }
 
-        if (isset($this->request->post['feed_ps_google_base_login'])) {
-            $data['feed_ps_google_base_login'] = (string) $this->request->post['feed_ps_google_base_login'];
+        if (isset($this->request->post['feed_ps_product_data_feed_login'])) {
+            $data['feed_ps_product_data_feed_login'] = (string) $this->request->post['feed_ps_product_data_feed_login'];
         } else {
-            $data['feed_ps_google_base_login'] = (string) $this->model_setting_setting->getSettingValue('feed_ps_google_base_login', $store_id);
+            $data['feed_ps_product_data_feed_login'] = (string) $this->model_setting_setting->getSettingValue('feed_ps_product_data_feed_login', $store_id);
         }
 
-        if (isset($this->request->post['feed_ps_google_base_password'])) {
-            $data['feed_ps_google_base_password'] = (string) $this->request->post['feed_ps_google_base_password'];
+        if (isset($this->request->post['feed_ps_product_data_feed_password'])) {
+            $data['feed_ps_product_data_feed_password'] = (string) $this->request->post['feed_ps_product_data_feed_password'];
         } else {
-            $data['feed_ps_google_base_password'] = (string) $this->model_setting_setting->getSettingValue('feed_ps_google_base_password', $store_id);
+            $data['feed_ps_product_data_feed_password'] = (string) $this->model_setting_setting->getSettingValue('feed_ps_product_data_feed_password', $store_id);
         }
 
-        if (isset($this->request->post['feed_ps_google_base_tax'])) {
-            $data['feed_ps_google_base_tax'] = (bool) $this->request->post['feed_ps_google_base_tax'];
+        if (isset($this->request->post['feed_ps_product_data_feed_tax'])) {
+            $data['feed_ps_product_data_feed_tax'] = (bool) $this->request->post['feed_ps_product_data_feed_tax'];
         } else {
-            $data['feed_ps_google_base_tax'] = (bool) $this->model_setting_setting->getSettingValue('feed_ps_google_base_tax', $store_id);
+            $data['feed_ps_product_data_feed_tax'] = (bool) $this->model_setting_setting->getSettingValue('feed_ps_product_data_feed_tax', $store_id);
         }
 
-        if (isset($this->request->post['feed_ps_google_base_taxes'])) {
-            $data['feed_ps_google_base_taxes'] = (array) $this->request->post['feed_ps_google_base_taxes'];
+        if (isset($this->request->post['feed_ps_product_data_feed_taxes'])) {
+            $data['feed_ps_product_data_feed_taxes'] = (array) $this->request->post['feed_ps_product_data_feed_taxes'];
         } else {
-            $base_taxes = $this->model_setting_setting->getSettingValue('feed_ps_google_base_taxes', $store_id);
+            $base_taxes = $this->model_setting_setting->getSettingValue('feed_ps_product_data_feed_taxes', $store_id);
 
             /**
              * @var array $base_taxes
              */
             $base_taxes = json_decode((string) $base_taxes, true);
 
-            $data['feed_ps_google_base_taxes'] = json_last_error() === JSON_ERROR_NONE ? $base_taxes : array();
+            $data['feed_ps_product_data_feed_taxes'] = json_last_error() === JSON_ERROR_NONE ? $base_taxes : array();
         }
 
         $this->load->model('localisation/language');
@@ -169,7 +169,7 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
         $data['stores'][] = array(
             'store_id' => 0,
             'name' => $this->config->get('config_name') . '&nbsp;' . $this->language->get('text_default'),
-            'href' => $this->url->link('extension/feed/ps_google_base', 'user_token=' . $this->session->data['user_token'] . '&store_id=0'),
+            'href' => $this->url->link('extension/feed/ps_product_data_feed', 'user_token=' . $this->session->data['user_token'] . '&store_id=0'),
         );
 
         $this->load->model('setting/store');
@@ -182,7 +182,7 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
             $data['stores'][] = array(
                 'store_id' => $store['store_id'],
                 'name' => $store['name'],
-                'href' => $this->url->link('extension/feed/ps_google_base', 'user_token=' . $this->session->data['user_token'] . '&store_id=' . $store['store_id']),
+                'href' => $this->url->link('extension/feed/ps_product_data_feed', 'user_token=' . $this->session->data['user_token'] . '&store_id=' . $store['store_id']),
             );
 
             if ((int) $store['store_id'] === $store_id) {
@@ -193,7 +193,7 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
         $data['data_feed_urls'] = array();
 
         foreach ($languages as $language) {
-            $data['data_feed_urls'][$language['language_id']] = rtrim($store_url, '/') . '/index.php?route=extension/feed/ps_google_base&language=' . $language['code'];
+            $data['data_feed_urls'][$language['language_id']] = rtrim($store_url, '/') . '/index.php?route=extension/feed/ps_product_data_feed&language=' . $language['code'];
         }
 
         $this->load->model('localisation/tax_rate');
@@ -207,7 +207,7 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
             );
         }
 
-        $data['backup_gbc2c'] = $this->url->link('extension/feed/ps_google_base/backup_gbc2c', 'user_token=' . $this->session->data['user_token'] . '&store_id=' . $store_id, true);
+        $data['backup_gbc2c'] = $this->url->link('extension/feed/ps_product_data_feed/backup_gbc2c', 'user_token=' . $this->session->data['user_token'] . '&store_id=' . $store_id, true);
 
         $data['text_contact'] = sprintf($this->language->get('text_contact'), self::EXTENSION_EMAIL, self::EXTENSION_EMAIL, self::EXTENSION_DOC);
 
@@ -215,12 +215,12 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
         $data['column_left'] = $this->load->controller('common/column_left');
         $data['footer'] = $this->load->controller('common/footer');
 
-        $this->response->setOutput($this->load->view('extension/feed/ps_google_base', $data));
+        $this->response->setOutput($this->load->view('extension/feed/ps_product_data_feed', $data));
     }
 
     protected function validate()
     {
-        if (!$this->user->hasPermission('modify', 'extension/feed/ps_google_base')) {
+        if (!$this->user->hasPermission('modify', 'extension/feed/ps_product_data_feed')) {
             $this->error['warning'] = $this->language->get('error_permission');
         }
 
@@ -229,8 +229,8 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
         }
 
         if (!$this->error) {
-            if (isset($this->request->post['feed_ps_google_base_tax'], $this->request->post['feed_ps_google_base_taxes'])) {
-                foreach ($this->request->post['feed_ps_google_base_taxes'] as $row_id => $data) {
+            if (isset($this->request->post['feed_ps_product_data_feed_tax'], $this->request->post['feed_ps_product_data_feed_taxes'])) {
+                foreach ($this->request->post['feed_ps_product_data_feed_taxes'] as $row_id => $data) {
                     if (utf8_strlen(trim($data['country'])) === 0 || utf8_strlen(trim($data['country_id'])) === 0) {
                         $this->error['input_tax_country'][$row_id] = $this->language->get('error_tax_country');
                     }
@@ -251,9 +251,9 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
     }
 
     /**
-     * Install the Google Base feed extension.
+     * Install the Product Data Feed feed extension.
      *
-     * This method is called to perform any setup required when the Google Base
+     * This method is called to perform any setup required when the Product Data Feed
      * feed extension is installed. It loads the appropriate model and calls
      * the model's install method to handle the installation logic, which may
      * include database schema updates or initial setup tasks.
@@ -262,15 +262,15 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
      */
     public function install()
     {
-        $this->load->model('extension/feed/ps_google_base');
+        $this->load->model('extension/feed/ps_product_data_feed');
 
-        $this->model_extension_feed_ps_google_base->install();
+        $this->model_extension_feed_ps_product_data_feed->install();
     }
 
     /**
-     * Uninstall the Google Base feed extension.
+     * Uninstall the Product Data Feed feed extension.
      *
-     * This method is called to perform any cleanup required when the Google Base
+     * This method is called to perform any cleanup required when the Product Data Feed
      * feed extension is uninstalled. It loads the appropriate model and calls
      * the model's uninstall method to handle the uninstallation logic, which may
      * include removing database entries or reverting changes made during installation.
@@ -279,19 +279,19 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
      */
     public function uninstall()
     {
-        $this->load->model('extension/feed/ps_google_base');
+        $this->load->model('extension/feed/ps_product_data_feed');
 
-        $this->model_extension_feed_ps_google_base->uninstall();
+        $this->model_extension_feed_ps_product_data_feed->uninstall();
     }
 
     public function backup_gbc2c()
     {
-        $this->load->language('extension/feed/ps_google_base');
+        $this->load->language('extension/feed/ps_product_data_feed');
 
-        if (!$this->user->hasPermission('modify', 'extension/feed/ps_google_base')) {
+        if (!$this->user->hasPermission('modify', 'extension/feed/ps_product_data_feed')) {
             $this->session->data['error'] = $this->language->get('error_permission');
 
-            $this->response->redirect($this->url->link('extension/feed/ps_google_base', 'user_token=' . $this->session->data['user_token'] . '&store_id=' . $this->request->get['store_id'], true));
+            $this->response->redirect($this->url->link('extension/feed/ps_product_data_feed', 'user_token=' . $this->session->data['user_token'] . '&store_id=' . $this->request->get['store_id'], true));
         }
 
         if (isset($this->request->get['store_id'])) {
@@ -300,14 +300,14 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
             $store_id = 0;
         }
 
-        $this->load->model('extension/feed/ps_google_base');
+        $this->load->model('extension/feed/ps_product_data_feed');
 
-        $data = $this->model_extension_feed_ps_google_base->backup_gbc2c($store_id);
+        $data = $this->model_extension_feed_ps_product_data_feed->backup_gbc2c($store_id);
 
         if (!$data) {
             $this->session->data['error'] = $this->language->get('error_no_data_to_backup');
 
-            $this->response->redirect($this->url->link('extension/feed/ps_google_base', 'user_token=' . $this->session->data['user_token'] . '&store_id=' . $this->request->get['store_id'], true));
+            $this->response->redirect($this->url->link('extension/feed/ps_product_data_feed', 'user_token=' . $this->session->data['user_token'] . '&store_id=' . $this->request->get['store_id'], true));
         }
 
         $results = '';
@@ -328,12 +328,12 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
 
     public function restore_gbc2c()
     {
-        $this->load->language('extension/feed/ps_google_base');
+        $this->load->language('extension/feed/ps_product_data_feed');
 
         $json = array();
 
         // Check user has permission
-        if (!$this->user->hasPermission('modify', 'extension/feed/ps_google_base')) {
+        if (!$this->user->hasPermission('modify', 'extension/feed/ps_product_data_feed')) {
             $json['error'] = $this->language->get('error_permission');
         }
 
@@ -364,7 +364,7 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
         if (!$json) {
             $json['success'] = $this->language->get('text_success');
 
-            $this->load->model('extension/feed/ps_google_base');
+            $this->load->model('extension/feed/ps_product_data_feed');
 
             // Get the contents of the uploaded file
             $content = file_get_contents($this->request->files['file']['tmp_name']);
@@ -375,7 +375,7 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
                 $store_id = 0;
             }
 
-            $this->model_extension_feed_ps_google_base->restore_gbc2c($content, $store_id);
+            $this->model_extension_feed_ps_product_data_feed->restore_gbc2c($content, $store_id);
 
             unlink($this->request->files['file']['tmp_name']);
         }
@@ -393,7 +393,7 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
      * import categories into the database.
      *
      * The method performs the following steps:
-     * 1. Checks if the user has permission to modify the Google Base feed settings.
+     * 1. Checks if the user has permission to modify the Product Data Feed feed settings.
      * 2. Validates the uploaded file for the correct format (must be a .txt file).
      * 3. Handles any upload errors and prepares error messages.
      * 4. Reads the content of the uploaded file and invokes the import method
@@ -407,12 +407,12 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
      */
     public function import_gbc()
     {
-        $this->load->language('extension/feed/ps_google_base');
+        $this->load->language('extension/feed/ps_product_data_feed');
 
         $json = array();
 
         // Check user has permission
-        if (!$this->user->hasPermission('modify', 'extension/feed/ps_google_base')) {
+        if (!$this->user->hasPermission('modify', 'extension/feed/ps_product_data_feed')) {
             $json['error'] = $this->language->get('error_permission');
         }
 
@@ -443,12 +443,12 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
         if (!$json) {
             $json['success'] = $this->language->get('text_success');
 
-            $this->load->model('extension/feed/ps_google_base');
+            $this->load->model('extension/feed/ps_product_data_feed');
 
             // Get the contents of the uploaded file
             $content = file_get_contents($this->request->files['file']['tmp_name']);
 
-            $this->model_extension_feed_ps_google_base->import_gbc($content);
+            $this->model_extension_feed_ps_product_data_feed->import_gbc($content);
 
             unlink($this->request->files['file']['tmp_name']);
         }
@@ -458,16 +458,16 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
     }
 
     /**
-     * Retrieves and displays Google Base categories for the feed.
+     * Retrieves and displays Product Data Feed categories for the feed.
      *
-     * This method handles the retrieval and display of Google Base categories
+     * This method handles the retrieval and display of Product Data Feed categories
      * within the extension. It supports pagination and prepares data to be rendered
      * in the corresponding view. The method performs the following actions:
      *
      * 1. Loads the required language file for localization.
      * 2. Retrieves the current page number from the request; defaults to page 1 if not set.
      * 3. Sets a limit for the number of categories displayed per page.
-     * 4. Loads the model responsible for Google Base feed operations.
+     * 4. Loads the model responsible for Product Data Feed feed operations.
      * 5. Fetches the categories from the model based on the current page and limit.
      * 6. Populates an array with the retrieved categories for output.
      * 7. Calculates the total number of categories and prepares pagination data.
@@ -478,7 +478,7 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
      */
     public function category()
     {
-        $this->load->language('extension/feed/ps_google_base');
+        $this->load->language('extension/feed/ps_product_data_feed');
 
         if (isset($this->request->get['store_id'])) {
             $store_id = (int) $this->request->get['store_id'];
@@ -500,9 +500,9 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
             'limit' => $limit
         );
 
-        $this->load->model('extension/feed/ps_google_base');
+        $this->load->model('extension/feed/ps_product_data_feed');
 
-        $results = $this->model_extension_feed_ps_google_base->getCategories($filter_data);
+        $results = $this->model_extension_feed_ps_product_data_feed->getCategories($filter_data);
 
         $data['google_base_categories'] = array();
 
@@ -515,25 +515,25 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
             );
         }
 
-        $category_total = $this->model_extension_feed_ps_google_base->getTotalCategories();
+        $category_total = $this->model_extension_feed_ps_product_data_feed->getTotalCategories();
 
         $pagination = new Pagination();
         $pagination->total = $category_total;
         $pagination->page = $page;
         $pagination->limit = $limit;
-        $pagination->url = $this->url->link('extension/feed/ps_google_base/category', 'store_id= ' . $store_id . '&user_token=' . $this->session->data['user_token'] . '&page={page}', true);
+        $pagination->url = $this->url->link('extension/feed/ps_product_data_feed/category', 'store_id= ' . $store_id . '&user_token=' . $this->session->data['user_token'] . '&page={page}', true);
 
         $data['pagination'] = $pagination->render();
 
         $data['results'] = sprintf($this->language->get('text_pagination'), ($category_total) ? (($page - 1) * $limit) + 1 : 0, ((($page - 1) * $limit) > ($category_total - $limit)) ? $category_total : ((($page - 1) * $limit) + $limit), $category_total, ceil($category_total / $limit));
 
-        $this->response->setOutput($this->load->view('extension/feed/ps_google_base_category', $data));
+        $this->response->setOutput($this->load->view('extension/feed/ps_product_data_feed_category', $data));
     }
 
     /**
-     * Adds a Google Base category to the feed.
+     * Adds a Product Data Feed category to the feed.
      *
-     * This method handles the addition of a Google Base category based on
+     * This method handles the addition of a Product Data Feed category based on
      * the provided POST data. It checks if the user has permission to modify
      * the feed and if the required category IDs are present. If successful,
      * it invokes the model to add the category and returns a success message.
@@ -542,16 +542,16 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
      */
     public function addCategory()
     {
-        $this->load->language('extension/feed/ps_google_base');
+        $this->load->language('extension/feed/ps_product_data_feed');
 
         $json = array();
 
-        if (!$this->user->hasPermission('modify', 'extension/feed/ps_google_base')) {
+        if (!$this->user->hasPermission('modify', 'extension/feed/ps_product_data_feed')) {
             $json['error'] = $this->language->get('error_permission');
         } elseif (!empty($this->request->post['google_base_category_id']) && !empty($this->request->post['category_id'])) {
-            $this->load->model('extension/feed/ps_google_base');
+            $this->load->model('extension/feed/ps_product_data_feed');
 
-            $this->model_extension_feed_ps_google_base->addCategory($this->request->post);
+            $this->model_extension_feed_ps_product_data_feed->addCategory($this->request->post);
 
             $json['success'] = $this->language->get('text_success');
         }
@@ -561,9 +561,9 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
     }
 
     /**
-     * Removes a Google Base category from the feed.
+     * Removes a Product Data Feed category from the feed.
      *
-     * This method handles the removal of a specified Google Base category
+     * This method handles the removal of a specified Product Data Feed category
      * from the feed. It checks if the user has the necessary permissions
      * to modify the feed. If the user has permission, the specified category
      * is deleted through the model and a success message is returned.
@@ -572,16 +572,16 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
      */
     public function removeCategory()
     {
-        $this->load->language('extension/feed/ps_google_base');
+        $this->load->language('extension/feed/ps_product_data_feed');
 
         $json = array();
 
-        if (!$this->user->hasPermission('modify', 'extension/feed/ps_google_base')) {
+        if (!$this->user->hasPermission('modify', 'extension/feed/ps_product_data_feed')) {
             $json['error'] = $this->language->get('error_permission');
         } else {
-            $this->load->model('extension/feed/ps_google_base');
+            $this->load->model('extension/feed/ps_product_data_feed');
 
-            $this->model_extension_feed_ps_google_base->deleteCategory($this->request->post);
+            $this->model_extension_feed_ps_product_data_feed->deleteCategory($this->request->post);
 
             $json['success'] = $this->language->get('text_success');
         }
@@ -591,9 +591,9 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
     }
 
     /**
-     * Autocompletes Google Base category names based on user input.
+     * Autocompletes Product Data Feed category names based on user input.
      *
-     * This method provides autocomplete suggestions for Google Base categories
+     * This method provides autocomplete suggestions for Product Data Feed categories
      * based on the input from the user. It retrieves category data from the
      * model, filtering based on the provided name, and returns a JSON response
      * with the matching categories.
@@ -605,7 +605,7 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
         $json = array();
 
         if (isset($this->request->get['filter_name'])) {
-            $this->load->model('extension/feed/ps_google_base');
+            $this->load->model('extension/feed/ps_product_data_feed');
 
             if (isset($this->request->get['filter_name'])) {
                 $filter_name = $this->request->get['filter_name'];
@@ -619,7 +619,7 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
                 'limit' => 5
             );
 
-            $results = $this->model_extension_feed_ps_google_base->getGoogleBaseCategories($filter_data);
+            $results = $this->model_extension_feed_ps_product_data_feed->getGoogleBaseCategories($filter_data);
 
             foreach ($results as $result) {
                 $json[] = array(
@@ -661,7 +661,7 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
         }
 
         if (utf8_strlen($filter_name) > 0) {
-            $this->load->model('extension/feed/ps_google_base');
+            $this->load->model('extension/feed/ps_product_data_feed');
 
             $filter_data = array(
                 'filter_name' => $filter_name,
@@ -669,7 +669,7 @@ class ControllerExtensionFeedPSGoogleBase extends Controller
                 'limit' => 5,
             );
 
-            $results = $this->model_extension_feed_ps_google_base->getCountries($filter_data);
+            $results = $this->model_extension_feed_ps_product_data_feed->getCountries($filter_data);
 
             foreach ($results as $key => $value) {
                 $json[] = array(

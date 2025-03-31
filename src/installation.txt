@@ -1,6 +1,6 @@
-Playful Sparkle - Google Base
+Playful Sparkle - Product Data Feed
 
-Playful Sparkle - Google Base extension for OpenCart 3.x+ enables seamless
+Playful Sparkle - Product Data Feed extension for OpenCart 3.x+ enables seamless
 export of OpenCart product data to Google Merchant Center, ensuring that your
 products are accurately displayed on the Google Shopping platform. The extension
 includes key features such as multi-store and multi-language data feed output,
@@ -44,7 +44,7 @@ Features
   Türkçe (tr-tr) (community contribution Furkan Başkak), and Slovenčina (sk-sk).
 
 For more information, visit the extension's GitHub page
-at https://github.com/playfulsparkle/oc3_google_base.git.
+at https://github.com/playfulsparkle/oc3_product_data_feed.git.
 
 Demo frontend: https://opencart3.playfulsparkle.com/
 Demo backend: https://opencart3.playfulsparkle.com/admin/
@@ -54,7 +54,7 @@ Installation Instructions
 1. Download the latest version from the OpenCart Marketplace.
 2. Log in to your OpenCart admin panel.
 3. Navigate to Extensions > Installer.
-4. Click the Upload button and upload the ps_google_base.ocmod.zip file.
+4. Click the Upload button and upload the ps_product_data_feed.ocmod.zip file.
 5. Navigate to Extensions > Extensions and select Feeds from the Choose the
    extension type dropdown list.
 6. Locate the extension in the Feeds list and click the Install button.
