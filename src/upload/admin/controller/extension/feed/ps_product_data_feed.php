@@ -1,5 +1,5 @@
 <?php
-class ControllerExtensionFeedPSGoogleBase extends Controller
+class ControllerExtensionFeedPSProductDataFeed extends Controller
 {
     /**
      * @var string The support email address.

@@ -1,5 +1,5 @@
 <?php
-class ModelExtensionFeedPSGoogleBase extends Model
+class ModelExtensionFeedPSProductDataFeed extends Model
 {
     /**
      * Retrieves all categories associated with Product Data Feed categories.

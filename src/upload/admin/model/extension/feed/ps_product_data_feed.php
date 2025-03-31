@@ -1,5 +1,5 @@
 <?php
-class ModelExtensionFeedPSGoogleBase extends Model
+class ModelExtensionFeedPSProductDataFeed extends Model
 {
     /**
      * Installs the necessary database tables for the Product Data Feed extension.
