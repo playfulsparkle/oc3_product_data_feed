@@ -1,6 +1,6 @@
-Playful Sparkle - Product Data Feed
+Playful Sparkle - Google Product Data Feed
 
-Playful Sparkle - Product Data Feed extension for OpenCart 3.x+ enables seamless
+Playful Sparkle - Google Product Data Feed extension for OpenCart 3.x+ enables seamless
 export of OpenCart product data to Google Merchant Center, ensuring that your
 products are accurately displayed on the Google Shopping platform. The extension
 includes key features such as multi-store and multi-language data feed output,

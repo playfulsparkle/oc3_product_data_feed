@@ -2,11 +2,11 @@
 class ModelExtensionFeedPSProductDataFeed extends Model
 {
     /**
-     * Installs the necessary database tables for the Product Data Feed extension.
+     * Installs the necessary database tables for the Google Product Data Feed extension.
      *
      * This method creates two tables: `ps_product_data_feed_category` for storing
-     * Product Data Feed category information and `ps_product_data_feed_category_to_category`
-     * for mapping Product Data Feed categories to internal category IDs. The tables
+     * Google Product Data Feed category information and `ps_product_data_feed_category_to_category`
+     * for mapping Google Product Data Feed categories to internal category IDs. The tables
      * are created with the appropriate structure and indexes.
      *
      * @return void
@@ -33,7 +33,7 @@ class ModelExtensionFeedPSProductDataFeed extends Model
     }
 
     /**
-     * Uninstalls the Product Data Feed extension by dropping its database tables.
+     * Uninstalls the Google Product Data Feed extension by dropping its database tables.
      *
      * This method removes the tables `ps_product_data_feed_category` and
      * `ps_product_data_feed_category_to_category` from the database if they exist.
@@ -81,11 +81,11 @@ class ModelExtensionFeedPSProductDataFeed extends Model
     }
 
     /**
-     * Imports Product Data Feed categories from a string input.
+     * Imports Google Product Data Feed categories from a string input.
      *
      * This method deletes all existing records in the `ps_product_data_feed_category` table
-     * and then parses the provided string input to extract Product Data Feed category data.
-     * Each line should contain a Product Data Feed category ID and name separated by " - ".
+     * and then parses the provided string input to extract Google Product Data Feed category data.
+     * Each line should contain a Google Product Data Feed category ID and name separated by " - ".
      *
      * @param string $string The input string containing category data.
      * @return void
@@ -110,14 +110,14 @@ class ModelExtensionFeedPSProductDataFeed extends Model
     }
 
     /**
-     * Retrieves Product Data Feed categories with optional filtering.
+     * Retrieves Google Product Data Feed categories with optional filtering.
      *
      * This method retrieves categories from the `ps_product_data_feed_category` table
      * that match the specified filter name. It supports pagination through the
      * `start` and `limit` parameters in the provided data array.
      *
      * @param array $data Optional filtering parameters.
-     * @return array An array of matching Product Data Feed categories.
+     * @return array An array of matching Google Product Data Feed categories.
      */
     public function getGoogleBaseCategories($data = array())
     {
@@ -141,10 +141,10 @@ class ModelExtensionFeedPSProductDataFeed extends Model
     }
 
     /**
-     * Adds a mapping between a Product Data Feed category and an internal category.
+     * Adds a mapping between a Google Product Data Feed category and an internal category.
      *
      * This method removes any existing mapping for the specified category ID and
-     * then inserts a new mapping between the provided Product Data Feed category ID and
+     * then inserts a new mapping between the provided Google Product Data Feed category ID and
      * the internal category ID.
      *
      * @param array $data An array containing 'google_base_category_id' and 'category_id'.

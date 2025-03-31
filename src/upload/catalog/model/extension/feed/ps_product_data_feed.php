@@ -2,16 +2,16 @@
 class ModelExtensionFeedPSProductDataFeed extends Model
 {
     /**
-     * Retrieves all categories associated with Product Data Feed categories.
+     * Retrieves all categories associated with Google Product Data Feed categories.
      *
      * This method queries the database to get a list of categories
-     * linked to Product Data Feed categories along with their names in the
-     * current language. The results are sorted by the Product Data Feed
+     * linked to Google Product Data Feed categories along with their names in the
+     * current language. The results are sorted by the Google Product Data Feed
      * category name in ascending order.
      *
      * @return array An array of categories with the following keys:
-     *               - google_base_category_id: ID of the Product Data Feed category
-     *               - google_base_category: Name of the Product Data Feed category
+     *               - google_base_category_id: ID of the Google Product Data Feed category
+     *               - google_base_category: Name of the Google Product Data Feed category
      *               - category_id: ID of the associated category
      *               - category: Name of the associated category
      */
@@ -30,13 +30,13 @@ class ModelExtensionFeedPSProductDataFeed extends Model
     }
 
     /**
-     * Gets the total number of Product Data Feed categories.
+     * Gets the total number of Google Product Data Feed categories.
      *
      * This method queries the database to count the total number of
      * records in the `ps_product_data_feed_category_to_category` table,
-     * which represents the number of Product Data Feed categories.
+     * which represents the number of Google Product Data Feed categories.
      *
-     * @return int The total number of Product Data Feed categories.
+     * @return int The total number of Google Product Data Feed categories.
      */
     public function getTotalCategories()
     {

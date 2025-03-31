@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-This file is part of "Playful Sparkle - Product Data Feed" project and subject to the terms
+This file is part of "Playful Sparkle - Google Product Data Feed" project and subject to the terms
 and conditions defined in file "LICENSE", which is part of this source
 code package and also available on the project page: https://github.com/playfulsparkle/oc3_product_data_feed.git
 -->
 <modification>
-    <name>Playful Sparkle - Product Data Feed</name>
+    <name>Playful Sparkle - Google Product Data Feed</name>
     <code>ps_product_data_feed</code>
     <version>1.0.5</version>
     <author>Playful Sparkle</author>
