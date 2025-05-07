@@ -75,7 +75,14 @@ class ControllerExtensionFeedPSProductDataFeed extends Controller
 
         // Add channel metadata
         $xml->writeElement('title', $this->config->get('config_name'));
-        $xml->writeElement('description', $this->config->get('config_meta_description'));
+
+        $meta_description = $this->config->get('config_meta_description');
+
+        if (is_array($meta_description)) {
+            $meta_description = (string) array_shift($meta_description);
+        }
+
+        $xml->writeElement('description', $meta_description);
 
         $link = $this->url->link('common/home');
         $xml->writeElement('link', str_replace('&amp;', '&', $link));
