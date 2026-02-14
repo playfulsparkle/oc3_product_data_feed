@@ -131,23 +131,16 @@ class ControllerExtensionFeedPSProductDataFeed extends Controller
 
                     $xml->startElement('item');
 
-                    // Add product details with CDATA for name, description, manufacturer
-                    $xml->startElement('title');
+                    // Add product details with CDATA for name, description
+                    $xml->startElement('g:title');
                     $xml->writeCData(html_entity_decode($product['name'], ENT_QUOTES, 'UTF-8'));
                     $xml->endElement();
 
-                    $product_link = $this->url->link('product/product', 'product_id=' . $product['product_id']);
-                    $xml->writeElement('link', str_replace('&amp;', '&', $product_link));
+                    $xml->writeElement('g:link', str_replace('&amp;', '&', $this->url->link('product/product', 'product_id=' . $product['product_id'])));
 
-                    $xml->startElement('description');
+                    $xml->startElement('g:description');
                     $xml->writeCData($this->normalizeDescription($product['description']));
                     $xml->endElement();
-
-                    if (isset($product['manufacturer'])) {
-                        $xml->startElement('g:brand');
-                        $xml->writeCData(html_entity_decode($product['manufacturer'], ENT_QUOTES, 'UTF-8'));
-                        $xml->endElement();
-                    }
 
                     // Static values and conditions
                     $xml->writeElement('g:condition', 'new');
@@ -185,37 +178,66 @@ class ControllerExtensionFeedPSProductDataFeed extends Controller
                     // Model number
                     $xml->writeElement('g:model_number', $product['model']);
 
-                    // MPN, UPC, and EAN with CDATA where applicable
-                    if ($product['mpn']) {
-                        $xml->startElement('g:mpn');
-                        $xml->writeCData($product['mpn']);
+                    // Brand, MPN, and GTIN candidates
+                    $brand = isset($product['manufacturer']) ? trim((string) $product['manufacturer']) : '';
+                    $mpn = isset($product['mpn']) ? trim((string) $product['mpn']) : '';
+
+                    $upc = isset($product['upc']) ? trim((string) $product['upc']) : '';
+                    $ean = isset($product['ean']) ? trim((string) $product['ean']) : '';
+                    $jan = isset($product['jan']) ? trim((string) $product['jan']) : '';
+                    $isbn = isset($product['isbn']) ? trim((string) $product['isbn']) : '';
+
+                    // Prefer EAN, then UPC, then JAN
+                    $gtin = ($ean !== '') ? $ean : $upc;
+
+                    if ($gtin === '') {
+                        $gtin = ($jan !== '') ? $jan : '';
+                    }
+
+                    // If still empty, allow ISBN only if it is 13 digits
+                    if ($gtin === '' && $isbn !== '' && preg_match('/^[0-9]{13}$/', $isbn)) {
+                        $gtin = $isbn;
+                    }
+
+                    // Block GTIN if it contains any non-digit characters
+                    if ($gtin !== '' && preg_match('/[^0-9]/', $gtin)) {
+                        $gtin = '';
+                    }
+
+                    if ($brand !== '') {
+                        $xml->startElement('g:brand');
+                        $xml->writeCData(html_entity_decode($brand, ENT_QUOTES, 'UTF-8'));
                         $xml->endElement();
-                    } else {
-                        $xml->writeElement('g:identifier_exists', 'false');
                     }
 
-                    if ($product['upc']) {
-                        $xml->writeElement('g:upc', $product['upc']);
+                    if ($gtin !== '') {
+                        $xml->writeElement('g:gtin', $gtin);
                     }
 
-                    if ($product['ean']) {
-                        $xml->writeElement('g:ean', $product['ean']);
+                    if ($mpn !== '') {
+                        $xml->startElement('g:mpn');
+                        $xml->writeCData($mpn);
+                        $xml->endElement();
+                    }
+
+                    if ($brand === '' && $gtin === '' && $mpn === '') {
+                        $xml->writeElement('g:identifier_exists', 'no');
                     }
 
                     // Price (handling special price if available)
                     if ($base_tax_status) {
-                        $formatted_price = $product['price'];
+                        $formatted_price = $this->tax->calculate($product['price'], $product['tax_class_id'], false);
                     } else {
-                        $formatted_price = $this->tax->calculate($product['price'], $product['tax_class_id'], $this->config->get('config_tax'));
+                        $formatted_price = $this->tax->calculate($product['price'], $product['tax_class_id'], true);
                     }
 
                     $xml->writeElement('g:price', $this->currency->format($formatted_price, $this->config->get('config_currency'), 0, false) . ' ' . $this->config->get('config_currency'));
 
                     if ((float) $product['special']) {
                         if ($base_tax_status) {
-                            $formatted_price = $product['special'];
+                            $formatted_price = $this->tax->calculate($product['special'], $product['tax_class_id'], false);
                         } else {
-                            $formatted_price = $this->tax->calculate($product['special'], $product['tax_class_id'], $this->config->get('config_tax'));
+                            $formatted_price = $this->tax->calculate($product['special'], $product['tax_class_id'], true);
                         }
 
                         $xml->writeElement('g:sale_price', $this->currency->format($formatted_price, $this->config->get('config_currency'), 0, false) . ' ' . $this->config->get('config_currency'));
@@ -256,39 +278,39 @@ class ControllerExtensionFeedPSProductDataFeed extends Controller
                     $categories = $this->model_catalog_product->getCategories($product['product_id']);
 
                     foreach ($categories as $category) {
-                        if (!isset($category_data[$category['category_id']])) { // Cache category info
-                            $path = $this->getPath($category['category_id']);
+                        $cid = (int) $category['category_id'];
+
+                        if (!isset($category_data[$cid])) {
+                            $path = $this->getPath($cid);
+
+                            $parts = array();
 
                             if ($path) {
-                                $string = '';
-
                                 foreach (explode('_', $path) as $path_id) {
-                                    $category_info = $this->model_catalog_category->getCategory($path_id);
-
-                                    if ($category_info) {
-                                        if (!$string) {
-                                            $string = $category_info['name'];
-                                        } else {
-                                            $string .= ' &gt; ' . $category_info['name'];
-                                        }
+                                    $category_info = $this->model_catalog_category->getCategory((int) $path_id);
+                                    if ($category_info && !empty($category_info['name'])) {
+                                        $parts[] = $category_info['name'];
                                     }
                                 }
-
-                                $category_data[$category['category_id']] = $string;
                             }
+
+                            $category_data[$cid] = $parts ? implode(' > ', $parts) : '';
                         }
 
-                        if (isset($category_data[$category['category_id']])) {
+                        if ($category_data[$cid] !== '') {
                             $xml->startElement('g:product_type');
-                            $xml->writeCData($category_data[$category['category_id']]);
+                            $xml->writeCData($category_data[$cid]);
                             $xml->endElement();
                         }
                     }
 
 
-                    // Quantity and weight
-                    $xml->writeElement('g:quantity', $product['quantity']);
-                    $xml->writeElement('g:weight', $this->weight->format($product['weight'], $product['weight_class_id']));
+                    // Weight
+                    $shipping_weight = $this->weight->format($product['weight'], $product['weight_class_id']);
+
+                    if ($shipping_weight) {
+                        $xml->writeElement('g:shipping_weight', $shipping_weight);
+                    }
 
                     // Availability with CDATA
                     $xml->startElement('g:availability');
