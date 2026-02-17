@@ -233,17 +233,19 @@ class ControllerExtensionFeedPSProductDataFeed extends Controller
         }
 
         if (!$this->error) {
-            foreach ($this->request->post['feed_ps_product_data_feed_taxes'] as $row_id => $data) {
-                if (utf8_strlen(trim($data['country'])) === 0 || utf8_strlen(trim($data['country_id'])) === 0) {
-                    $this->error['input_tax_country'][$row_id] = $this->language->get('error_tax_country');
-                }
+            if (isset($this->request->post['feed_ps_product_data_feed_taxes'])) {
+                foreach ($this->request->post['feed_ps_product_data_feed_taxes'] as $row_id => $data) {
+                    if (utf8_strlen(trim($data['country'])) === 0 || utf8_strlen(trim($data['country_id'])) === 0) {
+                        $this->error['input_tax_country'][$row_id] = $this->language->get('error_tax_country');
+                    }
 
-                if (utf8_strlen(trim($data['region'])) === 0) {
-                    $this->error['input_tax_region'][$row_id] = $this->language->get('error_tax_region');
-                }
+                    if (utf8_strlen(trim($data['region'])) === 0) {
+                        $this->error['input_tax_region'][$row_id] = $this->language->get('error_tax_region');
+                    }
 
-                if (utf8_strlen(trim($data['tax_rate_id'])) === 0) {
-                    $this->error['input_tax_rate_id'][$row_id] = $this->language->get('error_tax_rate_id');
+                    if (utf8_strlen(trim($data['tax_rate_id'])) === 0) {
+                        $this->error['input_tax_rate_id'][$row_id] = $this->language->get('error_tax_rate_id');
+                    }
                 }
             }
         }
