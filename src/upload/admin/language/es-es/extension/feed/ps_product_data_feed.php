@@ -14,7 +14,7 @@ $_['text_add_category_success']    = 'Éxito: ¡Has añadido correctamente la as
 $_['text_remove_category_success'] = 'Éxito: ¡Has eliminado correctamente la asociación de categorías!';
 $_['text_edit']                    = 'Editar Google Product Data Feed';
 $_['text_import']                  = 'Para descargar la lista más reciente de categorías de Google, <a href="https://support.google.com/merchants/answer/160081?hl=en" target="_blank" rel="external noopener noreferrer" class="alert-link">haz clic aquí</a> y selecciona la taxonomía con IDs numéricos en un archivo de texto plano (.txt). Luego, sube el archivo descargado usando el botón verde.';
-$_['text_contact']                 = '<p>Para más asistencia, por favor contacta a nuestro equipo de soporte:</p><ul><li><strong>Contacto:</strong> <a href="mailto:%s">%s</a></li><li><strong>Documentación:</strong> <a href="%s" target="_blank" rel="noopener noreferrer">Documentación para el usuario</a></li></ul>';
+$_['text_contact']                 = '<p>Para obtener más ayuda, por favor contacta a nuestro equipo de soporte:</p><ul><li><strong>Contacto:</strong> <a href="mailto:%s">%s</a></li><li><strong>Documentación:</strong> <a href="%s" target="_blank" rel="noopener noreferrer">Documentación para el Usuario</a></li></ul>';
 $_['text_gbc2c_restore']           = 'Antes de importar las asociaciones de categorías de Google Product Data Feed a las categorías de la tienda, asegúrese de haber seleccionado la tienda correcta para importar. El archivo de respaldo que suba (gbc2c_backup_store_x.txt) debe terminar con el ID de la tienda (x) en la que está restaurando.';
 
 // Column

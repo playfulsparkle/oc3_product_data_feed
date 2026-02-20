@@ -14,7 +14,7 @@ $_['text_add_category_success']    = 'Επιτυχία: Προσθήκη συσ�
 $_['text_remove_category_success'] = 'Επιτυχία: Αφαίρεση συσχέτισης κατηγορίας πραγματοποιήθηκε με επιτυχία!';
 $_['text_edit']                    = 'Επεξεργασία Google Product Data Feed';
 $_['text_import']                  = 'Για να κατεβάσετε την τελευταία λίστα κατηγοριών Google, <a href="https://support.google.com/merchants/answer/160081?hl=en" target="_blank" rel="external noopener noreferrer" class="alert-link">κάντε κλικ εδώ</a> και επιλέξτε την ταξινομία με αριθμητικά IDs σε αρχείο Plain Text (.txt). Στη συνέχεια, ανεβάστε το αρχείο χρησιμοποιώντας το πράσινο κουμπί.';
-$_['text_contact']                 = '<p>Για περαιτέρω βοήθεια, επικοινωνήστε με την ομάδα υποστήριξής μας:</p><ul><li><strong>Επικοινωνία:</strong> <a href="mailto:%s">%s</a></li><li><strong>Τεκμηρίωση:</strong> <a href="%s" target="_blank" rel="noopener noreferrer">Τεκμηρίωση Χρήστη</a></li></ul>';
+$_['text_contact']                 = '<p>Για περαιτέρω βοήθεια, επικοινωνήστε με την ομάδα υποστήριξής μας:</p><ul><li><strong>Επικοινωνία:</strong> <a href="mailto:%s">%s</a></li><li><strong>Τεκμηρίωση:</strong> <a href="%s" target="_blank" rel="noopener noreferrer">Τεκμηρίωση χρήστη</a></li></ul>';
 $_['text_gbc2c_restore']           = 'Πριν εισάγετε συσχετίσεις κατηγοριών Google Product Data Feed με κατηγορίες καταστήματος, βεβαιωθείτε ότι έχετε επιλέξει το σωστό κατάστημα για εισαγωγή. Το αρχείο αντιγράφου ασφαλείας που ανεβάζετε (gbc2c_backup_store_x.txt) πρέπει να τελειώνει με το αναγνωριστικό καταστήματος (x) του καταστήματος στο οποίο επαναφέρετε.';
 
 // Column

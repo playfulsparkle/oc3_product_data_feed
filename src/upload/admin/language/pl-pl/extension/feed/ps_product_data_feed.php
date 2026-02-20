@@ -14,7 +14,7 @@ $_['text_add_category_success']    = 'Sukces: Pomyślnie dodano przypisanie kate
 $_['text_remove_category_success'] = 'Sukces: Pomyślnie usunięto przypisanie kategorii!';
 $_['text_edit']                    = 'Edytuj Google Product Data Feed';
 $_['text_import']                  = 'Aby pobrać najnowszą listę kategorii Google, <a href="https://support.google.com/merchants/answer/160081?hl=en" target="_blank" rel="external noopener noreferrer" class="alert-link">kliknij tutaj</a> i wybierz taksonomię z numerycznymi identyfikatorami w pliku tekstowym (.txt). Następnie załaduj pobrany plik przy użyciu zielonego przycisku.';
-$_['text_contact']                 = '<p>W celu uzyskania pomocy skontaktuj się z naszym zespołem:</p><ul><li><strong>Kontakt:</strong> <a href="mailto:%s">%s</a></li><li><strong>Dokumentacja:</strong> <a href="%s" target="_blank" rel="noopener noreferrer">Dokumentacja użytkownika</a></li></ul>';
+$_['text_contact']                 = '<p>W celu uzyskania dodatkowej pomocy prosimy o kontakt z zespołem wsparcia:</p><ul><li><strong>Kontakt:</strong> <a href="mailto:%s">%s</a></li><li><strong>Dokumentacja:</strong> <a href="%s" target="_blank" rel="noopener noreferrer">Dokumentacja użytkownika</a></li></ul>';
 $_['text_gbc2c_restore']           = 'Przed przywracaniem przypisań kategorii, upewnij się że wybrano właściwy sklep. Plik kopii zapasowej (gbc2c_backup_store_x.txt) musi zawierać identyfikator sklepu (x), do którego przywracasz dane.';
 
 // Column
