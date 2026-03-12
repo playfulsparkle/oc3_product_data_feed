@@ -41,27 +41,29 @@ class ControllerExtensionFeedPSProductDataFeed extends Controller
 
         $this->load->model('setting/setting');
 
+        if (isset($this->request->get['store_id'])) {
+            $store_id = (int) $this->request->get['store_id'];
+        } else {
+            $store_id = 0;
+        }
+
         if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
             if (!(bool) $this->request->post['feed_ps_product_data_feed_tax']) {
                 $this->request->post['feed_ps_product_data_feed_taxes'] = [];
             }
 
-            $this->model_setting_setting->editSetting('feed_ps_product_data_feed', $this->request->post, $this->request->get['store_id']);
+            $this->model_setting_setting->editSetting('feed_ps_product_data_feed', $this->request->post, $store_id);
 
             $this->session->data['success'] = $this->language->get('text_success');
 
             $this->response->redirect($this->url->link('marketplace/extension', 'user_token=' . $this->session->data['user_token'] . '&type=feed', true));
         }
 
-        if (isset($this->session->data['error'])) {
-            $data['error_warning'] = $this->session->data['error'];
-
-            unset($this->session->data['error']);
-        } else if (isset($this->error['warning'])) {
-            $data['error_warning'] = $this->error['warning'];
-        } else {
-            $data['error_warning'] = '';
-        }
+		if (isset($this->error['warning'])) {
+			$data['error_warning'] = $this->error['warning'];
+		} else {
+			$data['error_warning'] = '';
+		}
 
         if (isset($this->error['input_tax_country'])) {
             $data['error_input_tax_country'] = $this->error['input_tax_country'];
@@ -79,12 +81,6 @@ class ControllerExtensionFeedPSProductDataFeed extends Controller
             $data['error_input_tax_rate_id'] = $this->error['input_tax_rate_id'];
         } else {
             $data['error_input_tax_rate_id'] = array();
-        }
-
-        if (isset($this->request->get['store_id'])) {
-            $store_id = (int) $this->request->get['store_id'];
-        } else {
-            $store_id = 0;
         }
 
 
@@ -306,16 +302,16 @@ class ControllerExtensionFeedPSProductDataFeed extends Controller
     {
         $this->load->language('extension/feed/ps_product_data_feed');
 
-        if (!$this->user->hasPermission('modify', 'extension/feed/ps_product_data_feed')) {
-            $this->session->data['error'] = $this->language->get('error_permission');
-
-            $this->response->redirect($this->url->link('extension/feed/ps_product_data_feed', 'user_token=' . $this->session->data['user_token'] . '&store_id=' . $this->request->get['store_id'], true));
-        }
-
         if (isset($this->request->get['store_id'])) {
             $store_id = (int) $this->request->get['store_id'];
         } else {
             $store_id = 0;
+        }
+
+        if (!$this->user->hasPermission('modify', 'extension/feed/ps_product_data_feed')) {
+            $this->session->data['error'] = $this->language->get('error_permission');
+
+            $this->response->redirect($this->url->link('extension/feed/ps_product_data_feed', 'user_token=' . $this->session->data['user_token'] . '&store_id=' . $store_id, true));
         }
 
         $this->load->model('extension/feed/ps_product_data_feed');
@@ -325,7 +321,7 @@ class ControllerExtensionFeedPSProductDataFeed extends Controller
         if (!$data) {
             $this->session->data['error'] = $this->language->get('error_no_data_to_backup');
 
-            $this->response->redirect($this->url->link('extension/feed/ps_product_data_feed', 'user_token=' . $this->session->data['user_token'] . '&store_id=' . $this->request->get['store_id'], true));
+            $this->response->redirect($this->url->link('extension/feed/ps_product_data_feed', 'user_token=' . $this->session->data['user_token'] . '&store_id=' . $store_id, true));
         }
 
         $results = '';
