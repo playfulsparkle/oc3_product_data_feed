@@ -14,7 +14,7 @@ $_['text_add_category_success']    = 'Úspěch: Úspěšně jste přidali asocia
 $_['text_remove_category_success'] = 'Úspěch: Úspěšně jste odstranili asociaci kategorie!';
 $_['text_edit']                    = 'Upravit Google Product Data Feed';
 $_['text_import']                  = 'Pro stažení nejnovějšího seznamu kategorií Google <a href="https://support.google.com/merchants/answer/160081?hl=cs" target="_blank" rel="external noopener noreferrer" class="alert-link">klikněte sem</a> a vyberte taxonomii s číselnými identifikátory v textovém (.txt) souboru. Poté soubor nahrajte pomocí zeleného tlačítka.';
-$_['text_contact']                 = '<p>Pro další pomoc se prosím obraťte na náš tým podpory:</p><ul><li><strong>Kontakt:</strong> <a href="mailto:%s">%s</a></li><li><strong>Dokumentace:</strong> <a href="%s" target="_blank" rel="noopener noreferrer">Dokumentace pro uživatele</a></li></ul>';
+$_['text_contact']                 = '<p>Pro další pomoc se prosím obraťte na náš tým podpory:</p><ul><li><strong>Webová stránka podpory:</strong> <a href="%1$s">%1$s</a></li><li><strong>GitHub repozitář:</strong> <a href="%2$s" target="_blank" rel="noopener noreferrer">%2$s</a></li><li><strong>Kontaktovat podporu:</strong> <a href="mailto:%3$s">%3$s</a></li></ul>';
 $_['text_gbc2c_restore']           = 'Před importem asociací kategorie Google Product Data Feed do kategorií obchodu se ujistěte, že jste vybrali správný obchod pro import. Záložní soubor, který nahráváte (gbc2c_backup_store_x.txt), musí končit ID obchodu (x), do kterého obnovujete.';
 
 // Column

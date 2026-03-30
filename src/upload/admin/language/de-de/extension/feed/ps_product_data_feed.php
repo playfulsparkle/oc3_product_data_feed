@@ -14,7 +14,7 @@ $_['text_add_category_success']    = 'Erfolg: Sie haben die Kategoriezusammenfü
 $_['text_remove_category_success'] = 'Erfolg: Sie haben die Kategoriezusammenführung erfolgreich entfernt!';
 $_['text_edit']                    = 'Google Product Data Feed bearbeiten';
 $_['text_import']                  = 'Um die neueste Liste der Google-Kategorien herunterzuladen, <a href="https://support.google.com/merchants/answer/160081?hl=de" target="_blank" rel="external noopener noreferrer" class="alert-link">klicken Sie hier</a>, und wählen Sie die Taxonomie mit numerischen Identifikatoren in einer einfachen Textdatei (.txt). Laden Sie dann die heruntergeladene Datei mit der grünen taste hoch.';
-$_['text_contact']                 = '<p>Für weitere Unterstützung wenden Sie sich bitte an unser Support-Team:</p><ul><li><strong>Kontakt:</strong> <a href="mailto:%s">%s</a></li><li><strong>Dokumentation:</strong> <a href="%s" target="_blank" rel="noopener noreferrer">Benutzerdokumentation</a></li></ul>';
+$_['text_contact']                 = '<p>Für weitere Unterstützung wenden Sie sich bitte an unser Support-Team:</p><ul><li><strong>Support-Webseite:</strong> <a href="%1$s">%1$s</a></li><li><strong>GitHub-Repository:</strong> <a href="%2$s" target="_blank" rel="noopener noreferrer">%2$s</a></li><li><strong>Support kontaktieren:</strong> <a href="mailto:%3$s">%3$s</a></li></ul>';
 $_['text_gbc2c_restore']           = 'Stellen Sie vor dem Import von Google Product Data Feed-Kategorien in die Kategorien des Shops sicher, dass Sie den richtigen Shop für den Import ausgewählt haben. Die hochgeladene Sicherungsdatei (gbc2c_backup_store_x.txt) muss mit der Shop-ID (x) des Shops enden, in den Sie die Daten wiederherstellen möchten.';
 
 // Column

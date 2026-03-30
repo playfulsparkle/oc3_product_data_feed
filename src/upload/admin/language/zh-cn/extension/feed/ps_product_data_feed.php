@@ -14,7 +14,7 @@ $_['text_add_category_success']    = '成功：您已成功添加分类关联！
 $_['text_remove_category_success'] = '成功：您已成功移除分类关联！';
 $_['text_edit']                    = '编辑 Google Product Data Feed';
 $_['text_import']                  = '如需下载最新的 Google 分类列表，请<a href="https://support.google.com/merchants/answer/160081?hl=en" target="_blank" rel="external noopener noreferrer" class="alert-link">点击此处</a>并选择纯文本 (.txt) 文件中带有数字 ID 的分类法。然后，点击绿色按钮上传下载的文件。';
-$_['text_contact']                 = '<p>如需进一步协助，请联系我们的支持团队：</p><ul><li><strong>联系方式：</strong> <a href="mailto:%s">%s</a></li><li><strong>文档：</strong> <a href="%s" target="_blank" rel="noopener noreferrer">用户文档</a></li></ul>';
+$_['text_contact']                 = '<p>如需进一步协助，请联系我们的支持团队：</p><ul><li><strong>支持网站：</strong> <a href="%1$s">%1$s</a></li><li><strong>GitHub 仓库：</strong> <a href="%2$s" target="_blank" rel="noopener noreferrer">%2$s</a></li><li><strong>联系支持：</strong> <a href="mailto:%3$s">%3$s</a></li></ul>';
 $_['text_gbc2c_restore']           = '在导入 Google Product Data Feed 分类以进行店铺分类关联之前，请确保您已选择了正确的店铺。您上传的备份文件 (gbc2c_backup_store_x.txt) 必须以您正在恢复的店铺 ID (x) 结尾。';
 
 // Column

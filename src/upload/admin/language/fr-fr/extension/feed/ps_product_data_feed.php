@@ -14,7 +14,7 @@ $_['text_add_category_success']    = 'Succès : Vous avez ajouté avec succès u
 $_['text_remove_category_success'] = 'Succès : Vous avez supprimé avec succès une association de catégorie !';
 $_['text_edit']                    = 'Modifier Google Product Data Feed';
 $_['text_import']                  = 'Pour télécharger la dernière liste des catégories Google, <a href="https://support.google.com/merchants/answer/160081?hl=en" target="_blank" rel="external noopener noreferrer" class="alert-link">cliquez ici</a> et sélectionnez la taxonomie avec des ID numériques dans un fichier texte (.txt). Ensuite, téléchargez le fichier à l’aide du bouton vert.';
-$_['text_contact']                 = '<p>Pour toute assistance supplémentaire, veuillez contacter notre équipe de support :</p><ul><li><strong>Contact :</strong> <a href="mailto:%s">%s</a></li><li><strong>Documentation :</strong> <a href="%s" target="_blank" rel="noopener noreferrer">Documentation utilisateur</a></li></ul>';
+$_['text_contact']                 = '<p>Pour toute assistance complémentaire, veuillez contacter notre équipe d’assistance :</p><ul><li><strong>Site Web d’assistance :</strong> <a href="%1$s">%1$s</a></li><li><strong>Dépôt GitHub :</strong> <a href="%2$s" target="_blank" rel="noopener noreferrer">%2$s</a></li><li><strong>Contacter l’assistance :</strong> <a href="mailto:%3$s">%3$s</a></li></ul>';
 $_['text_gbc2c_restore']           = 'Avant d’importer les associations de catégories Google Product Data Feed dans les catégories du magasin, assurez-vous d’avoir sélectionné le magasin approprié pour l’importation. Le fichier de sauvegarde que vous téléchargez (gbc2c_backup_store_x.txt) doit se terminer par l’ID du magasin (x) dans lequel vous restaurez.';
 
 // Column

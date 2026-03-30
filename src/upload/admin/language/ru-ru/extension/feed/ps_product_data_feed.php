@@ -14,7 +14,7 @@ $_['text_add_category_success']    = 'Успех: Вы успешно добав
 $_['text_remove_category_success'] = 'Успех: Вы успешно удалили ассоциацию категории!';
 $_['text_edit']                    = 'Редактировать Google Product Data Feed';
 $_['text_import']                  = 'Чтобы скачать актуальный список категорий Google, <a href="https://support.google.com/merchants/answer/160081?hl=en" target="_blank" rel="external noopener noreferrer" class="alert-link">нажмите здесь</a> и выберите таксономию с числовыми идентификаторами в формате Plain Text (.txt). Затем загрузите скачанный файл, используя зеленую кнопку.';
-$_['text_contact']                 = '<p>Для получения дополнительной помощи, пожалуйста, свяжитесь с нашей службой поддержки:</p><ul><li><strong>Контакт:</strong> <a href="mailto:%s">%s</a></li><li><strong>Документация:</strong> <a href="%s" target="_blank" rel="noopener noreferrer">Руководство пользователя</a></li></ul>';
+$_['text_contact']                 = '<p>Для получения дополнительной помощи, пожалуйста, свяжитесь с нашей службой поддержки:</p><ul><li><strong>Сайт поддержки:</strong> <a href="%1$s">%1$s</a></li><li><strong>Репозиторий GitHub:</strong> <a href="%2$s" target="_blank" rel="noopener noreferrer">%2$s</a></li><li><strong>Связаться с поддержкой:</strong> <a href="mailto:%3$s">%3$s</a></li></ul>';
 $_['text_gbc2c_restore']           = 'Перед импортом связей категорий Google Product Data Feed с категориями магазина убедитесь, что вы выбрали правильный магазин для импорта. Файл резервной копии, который вы загружаете (gbc2c_backup_store_x.txt), должен заканчиваться ID магазина (x), в который выполняется восстановление.';
 
 // Column

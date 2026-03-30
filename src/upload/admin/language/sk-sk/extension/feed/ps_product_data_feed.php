@@ -14,7 +14,7 @@ $_['text_add_category_success']    = 'Úspech: Úspešne ste pridali asociáciu 
 $_['text_remove_category_success'] = 'Úspech: Úspešne ste odstránili asociáciu kategórie!';
 $_['text_edit']                    = 'Upraviť Google Product Data Feed';
 $_['text_import']                  = 'Na stiahnutie najnovšieho zoznamu kategórií Google <a href="https://support.google.com/merchants/answer/160081?hl=sk" target="_blank" rel="external noopener noreferrer" class="alert-link">kliknite sem</a>, a vyberte taxonómiu s číselnými identifikátormi v prostom textovom (.txt) súbore. Potom nahrajte stiahnutý súbor pomocou zeleného tlačidla.';
-$_['text_contact']                 = '<p>Pre ďalšiu pomoc sa, prosím, obráťte na náš tím podpory:</p><ul><li><strong>Kontakt:</strong> <a href="mailto:%s">%s</a></li><li><strong>Dokumentácia:</strong> <a href="%s" target="_blank" rel="noopener noreferrer">Dokumentácia pre používateľov</a></li></ul>';
+$_['text_contact']                 = '<p>Ak potrebujete ďalšiu pomoc, obráťte sa na náš tím podpory:</p><ul><li><strong>Webová stránka podpory:</strong> <a href="%1$s">%1$s</a></li><li><strong>GitHub repozitár:</strong> <a href="%2$s" target="_blank" rel="noopener noreferrer">%2$s</a></li><li><strong>Kontaktovať podporu:</strong> <a href="mailto:%3$s">%3$s</a></li></ul>';
 $_['text_gbc2c_restore']           = 'Pred importovaním asociácií kategórií Google Product Data Feed do kategórií obchodu sa uistite, že ste vybrali správny obchod na import. Záložný súbor, ktorý nahrávate (gbc2c_backup_store_x.txt), musí končiť ID obchodu (x), do ktorého sa údaje obnovujú.';
 
 // Column

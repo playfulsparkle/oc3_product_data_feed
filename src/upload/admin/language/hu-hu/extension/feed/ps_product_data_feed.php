@@ -14,7 +14,7 @@ $_['text_add_category_success']    = 'Siker: Sikeresen hozzáadta a kategória-a
 $_['text_remove_category_success'] = 'Siker: Sikeresen eltávolította a kategória-asszociációt!';
 $_['text_edit']                    = 'Google Product Data Feed szerkesztése';
 $_['text_import']                  = 'A legfrissebb Google kategóriák lista letöltéséhez <a href="https://support.google.com/merchants/answer/160081?hl=hu" target="_blank" rel="external noopener noreferrer" class="alert-link">kattintson ide</a>, és válassza a taxonómiát numerikus azonosítókkal rendelkező sima szöveg (.txt) fájlt. Ezután a letöltött fájlt töltse fel a zöld gomb segítségével.';
-$_['text_contact']                 = '<p>További segítségért kérjük, lépjen kapcsolatba támogatási csapatunkkal:</p><ul><li><strong>Kapcsolat:</strong> <a href="mailto:%s">%s</a></li><li><strong>Dokumentáció:</strong> <a href="%s" target="_blank" rel="noopener noreferrer">Felhasználói dokumentáció</a></li></ul>';
+$_['text_contact']                 = '<p>További segítségért forduljon bizalommal ügyfélszolgálatunkhoz:</p><ul><li><strong>Támogatási weboldal:</strong> <a href="%1$s">%1$s</a></li><li><strong>GitHub tárhely:</strong> <a href="%2$s" target="_blank" rel="noopener noreferrer">%2$s</a></li><li><strong>Kapcsolatfelvétel:</strong> <a href="mailto:%3$s">%3$s</a></li></ul>';
 $_['text_gbc2c_restore']           = 'A Google Product Data Feed kategóriák és az áruház kategóriák társításának importálása előtt győződjön meg arról, hogy a megfelelő áruházat választotta ki az importáláshoz. A feltöltött biztonsági mentési fájlnak (gbc2c_backup_store_x.txt) az áruház azonosítójával (x) kell végződnie, ahová az adatokat visszaállítja.';
 
 // Column

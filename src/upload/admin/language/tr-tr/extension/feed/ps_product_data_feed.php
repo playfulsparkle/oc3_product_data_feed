@@ -14,7 +14,7 @@ $_['text_add_category_success']    = 'Başarılı: Kategori ilişkilendirmesi ta
 $_['text_remove_category_success'] = 'Başarılı: Kategori ilişkilendirmesi kaldırıldı!';
 $_['text_edit']                    = 'Google Product Data Feed Düzenle';
 $_['text_import']                  = 'Güncel Google kategorilerini <a href="https://support.google.com/merchants/answer/160081?hl=en" target="_blank" rel="external noopener noreferrer" class="alert-link">buradan</a> indirin. Numerik kategorileri (.txt uzantılı) yeşil alandan yükleyin.';
-$_['text_contact']                 = '<p>Daha fazla yardım için lütfen destek ekibimizle iletişime geçin:</p><ul><li><strong>İletişim:</strong> <a href="mailto:%s">%s</a></li><li><strong>Döküman:</strong> <a href="%s" target="_blank" rel="noopener noreferrer">Kullanıcı Dökümanları</a></li></ul>';
+$_['text_contact']                 = '<p>Daha fazla yardım için lütfen destek ekibimizle iletişime geçin:</p><ul><li><strong>Destek Web Sitesi:</strong> <a href="%1$s">%1$s</a></li><li><strong>GitHub Deposu:</strong> <a href="%2$s" target="_blank" rel="noopener noreferrer">%2$s</a></li><li><strong>Destekle İletişime Geçin:</strong> <a href="mailto:%3$s">%3$s</a></li></ul>';
 $_['text_gbc2c_restore']           = 'Google Product Data Feed kategori ile mağaza kategori eşleştirmelerini içe aktarmadan önce, doğru mağazayı seçtiğinizden emin olun. Yüklediğiniz yedekleme dosyasının (gbc2c_backup_store_x.txt) sonunda geri yükleme yapılan mağazanın kimliği (x) bulunmalıdır.';
 
 // Column
